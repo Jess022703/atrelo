@@ -440,30 +440,126 @@
     @media(max-width:900px) {
       .footer-top { grid-template-columns:1fr 1fr; }
     }
+
+    /* ── TABLET / MOBILE ── */
     @media(max-width:768px) {
+      /* Nav */
       nav { padding:14px 5%; }
       .nav-links, .nav-cta { display:none; }
       .nav-mobile-toggle { display:block; }
-      #hero { aspect-ratio:auto; min-height:100svh; }
-      .hero-nav-bar { padding:4cqw; }
-      .hero-nav-logo svg { width:6cqw; }
-      .hero-nav-logo span { font-size:3cqw; }
-      .hero-nav-links { display:none; }
-      .hero-nav-btn { font-size:2.5cqw; padding:2cqw 3.5cqw; }
-      .hero-body { flex-direction:column; align-items:flex-start; padding:16cqw 5cqw 5cqw; }
+
+      /* Hero: drop aspect-ratio, fill full screen height */
+      #hero {
+        aspect-ratio:auto;
+        min-height:100svh;
+        display:flex;
+        flex-direction:column;
+      }
+
+      /* Hide the duplicate inner nav — the fixed nav covers this */
+      .hero-nav-bar { display:none; }
+
+      /* Stack copy vertically, centered, real padding */
+      .hero-body {
+        flex-direction:column;
+        align-items:flex-start;
+        justify-content:center;
+        padding:100px 6% 60px;
+        flex:1;
+        gap:0;
+      }
       .hero-copy { width:100%; }
-      .hero-eyebrow { font-size:2cqw; }
-      .hero-h1 { font-size:7cqw; }
-      .hero-sub { font-size:2.8cqw; max-width:100%; }
-      .hero-btn-primary, .hero-btn-secondary { font-size:2.5cqw; padding:2.5cqw 4cqw; }
-      .hero-meta { font-size:2.2cqw; }
+
+      /* Hero text — real units, not cqw */
+      .hero-eyebrow {
+        font-size:.72rem;
+        letter-spacing:.2em;
+        margin-bottom:1rem;
+        animation-delay:2.7s;
+      }
+      .hero-h1 {
+        font-size:2.4rem;
+        letter-spacing:-1px;
+        line-height:1.08;
+        margin-bottom:1.1rem;
+        animation-delay:2.85s;
+      }
+      .hero-sub {
+        font-size:.95rem;
+        max-width:100%;
+        margin-bottom:1.8rem;
+        animation-delay:3.0s;
+      }
+      .hero-btns {
+        flex-direction:column;
+        gap:.75rem;
+        width:100%;
+        animation-delay:3.15s;
+      }
+      .hero-btn-primary,
+      .hero-btn-secondary {
+        font-size:.95rem;
+        padding:14px 22px;
+        border-radius:12px;
+        justify-content:center;
+        width:100%;
+      }
+      .hero-meta {
+        font-size:.8rem;
+        margin-top:1.4rem;
+        animation-delay:3.3s;
+      }
+
+      /* Hide rings on mobile */
       .hero-ring-stage { display:none; }
-      section { padding:5rem 5%; }
-      .footer-top { grid-template-columns:1fr; }
+
+      /* Sections */
+      section { padding:4rem 6%; }
+      #stats  { padding:3.5rem 6%; }
+
+      /* Services — single column on small screens */
+      .services-grid { grid-template-columns:1fr; }
+
+      /* Process — single column */
+      .process-steps { grid-template-columns:1fr; }
+
+      /* Testimonials — single column */
+      .testimonials-grid { grid-template-columns:1fr; }
+
+      /* About */
+      .about-grid { grid-template-columns:1fr; gap:2.5rem; }
+      .about-visual { display:none; }
+
+      /* CTA */
+      #cta { padding:5rem 6% !important; }
+      .cta-title { font-size:1.9rem; }
+      .cta-btns { flex-direction:column; align-items:stretch; }
+      .btn-primary, .btn-secondary { justify-content:center; width:100%; }
+
+      /* Footer */
+      .footer-top { grid-template-columns:1fr; gap:2rem; }
+      .footer-bottom { flex-direction:column; align-items:flex-start; gap:.75rem; }
+
+      /* Section title */
+      .section-title { font-size:1.8rem; }
+
+      /* Stats */
+      .stats-grid { grid-template-columns:1fr 1fr; gap:2rem; }
+      .stat-item h3 { font-size:2.4rem; }
+
+      /* Splash logo */
+      .splash-logo { width:55vw; }
+      .splash-word  { font-size:8vw; }
     }
+
+    /* ── PHONE (< 480px) ── */
     @media(max-width:480px) {
-      .stats-grid { grid-template-columns:1fr 1fr; }
-      .cta-btns { flex-direction:column; align-items:center; }
+      .hero-h1 { font-size:2rem; }
+      .hero-sub { font-size:.88rem; }
+      .section-title { font-size:1.6rem; }
+      .stat-item h3 { font-size:2rem; }
+      .cta-title { font-size:1.6rem; }
+      nav { padding:12px 5%; }
     }
 
     /* ─── SCROLL REVEAL ─── */
@@ -503,7 +599,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#testimonials">Clients</a></li>
   </ul>
-  <a href="mailto:contact@atrelo.com" class="nav-cta">Book a Consultation</a>
+  <a href="https://wa.me/17879234248" target="_blank" class="nav-cta">Book a Consultation</a>
   <button class="nav-mobile-toggle" aria-label="Toggle menu" onclick="document.getElementById('mobile-menu').classList.toggle('open')">
     <span></span><span></span><span></span>
   </button>
@@ -516,7 +612,7 @@
   <a href="#process" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;" onclick="document.getElementById('mobile-menu').classList.remove('open')">How It Works</a>
   <a href="#about" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;" onclick="document.getElementById('mobile-menu').classList.remove('open')">About</a>
   <a href="#testimonials" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;" onclick="document.getElementById('mobile-menu').classList.remove('open')">Clients</a>
-  <a href="mailto:contact@atrelo.com" class="btn-primary">Book a Consultation</a>
+  <a href="https://wa.me/17879234248" target="_blank" class="btn-primary">Book a Consultation</a>
 </div>
 
 <style>
@@ -570,7 +666,7 @@
       <h1 class="hero-h1">Engineering Business Efficiency <span class="accent">Through AI.</span></h1>
       <p class="hero-sub">We help companies automate operations, build custom software, and implement AI solutions that drive measurable growth.</p>
       <div class="hero-btns">
-        <a href="mailto:contact@atrelo.com" class="hero-btn-primary">Book a Consultation <span>→</span></a>
+        <a href="https://wa.me/17879234248" target="_blank" class="hero-btn-primary">Book a Consultation <span>→</span></a>
         <a href="#services" class="hero-btn-secondary">Explore Solutions <span style="color:#8fa0e8;">→</span></a>
       </div>
       <div class="hero-meta">
@@ -598,28 +694,52 @@
               <filter id="glowBig"  x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="14"/></filter>
               <filter id="glowSm"   x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="3"/></filter>
               <clipPath id="weaveBottom"><rect x="300" y="318" width="118" height="108"/></clipPath>
-              <g id="leftRing">
-                <circle cx="290" cy="262" r="130" fill="none" stroke="url(#ringGrad)" stroke-width="74" opacity="0.32" filter="url(#glowHuge)"/>
-                <circle cx="290" cy="262" r="130" fill="none" stroke="url(#ringGrad)" stroke-width="52" opacity="0.75" filter="url(#glowBig)"/>
-                <circle cx="290" cy="262" r="130" fill="none" stroke="url(#ringGrad)" stroke-width="34"/>
-                <circle cx="290" cy="262" r="130" fill="none" stroke="url(#coreGrad)" stroke-width="17" opacity="0.9" filter="url(#glowSm)"/>
-                <circle cx="290" cy="262" r="130" fill="none" stroke="#f5f7ff" stroke-width="4" opacity="0.95"/>
+              <linearGradient id="sideGrad" x1="150" y1="170" x2="560" y2="470" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#16245f"/>
+                <stop offset="0.5" stop-color="#2a1d63"/>
+                <stop offset="1" stop-color="#511c80"/>
+              </linearGradient>
+              <linearGradient id="edgeGrad" x1="170" y1="130" x2="560" y2="420" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#5a86ff"/>
+                <stop offset="0.5" stop-color="#8a6cf2"/>
+                <stop offset="1" stop-color="#e07bf2"/>
+              </linearGradient>
+              <g id="leftHalo">
+                <circle cx="290" cy="262" r="130" fill="none" stroke="url(#ringGrad)" stroke-width="66" opacity="0.2" filter="url(#glowHuge)"/>
+                <circle cx="290" cy="262" r="130" fill="none" stroke="url(#ringGrad)" stroke-width="46" opacity="0.42" filter="url(#glowBig)"/>
               </g>
-              <g id="rightRing">
-                <circle cx="438" cy="297" r="118" fill="none" stroke="url(#ringGrad)" stroke-width="70" opacity="0.32" filter="url(#glowHuge)"/>
-                <circle cx="438" cy="297" r="118" fill="none" stroke="url(#ringGrad)" stroke-width="50" opacity="0.75" filter="url(#glowBig)"/>
-                <circle cx="438" cy="297" r="118" fill="none" stroke="url(#ringGrad)" stroke-width="34"/>
-                <circle cx="438" cy="297" r="118" fill="none" stroke="url(#coreGrad)" stroke-width="17" opacity="0.9" filter="url(#glowSm)"/>
-                <circle cx="438" cy="297" r="118" fill="none" stroke="#f5f7ff" stroke-width="4" opacity="0.95"/>
+              <g id="rightHalo">
+                <circle cx="438" cy="297" r="118" fill="none" stroke="url(#ringGrad)" stroke-width="64" opacity="0.2" filter="url(#glowHuge)"/>
+                <circle cx="438" cy="297" r="118" fill="none" stroke="url(#ringGrad)" stroke-width="46" opacity="0.42" filter="url(#glowBig)"/>
               </g>
-              <g id="leftSolid">
-                <circle cx="290" cy="262" r="130" fill="none" stroke="url(#ringGrad)" stroke-width="34"/>
-                <circle cx="290" cy="262" r="130" fill="none" stroke="url(#coreGrad)" stroke-width="17" opacity="0.9"/>
-                <circle cx="290" cy="262" r="130" fill="none" stroke="#f5f7ff" stroke-width="4" opacity="0.95"/>
+              <g id="leftBody"><circle cx="290" cy="262" r="130" fill="none" stroke="url(#sideGrad)" stroke-width="36"/></g>
+              <g id="rightBody"><circle cx="438" cy="297" r="118" fill="none" stroke="url(#sideGrad)" stroke-width="36"/></g>
+              <g id="leftFace">
+                <circle cx="290" cy="262" r="130" fill="none" stroke="url(#edgeGrad)" stroke-width="36"/>
+                <circle cx="290" cy="262" r="130" fill="none" stroke="url(#ringGrad)" stroke-width="28"/>
+                <circle cx="290" cy="262" r="130" fill="none" stroke="url(#coreGrad)" stroke-width="13" opacity="0.85" filter="url(#glowSm)"/>
+                <circle cx="290" cy="262" r="130" fill="none" stroke="#f5f7ff" stroke-width="3" opacity="0.9"/>
+              </g>
+              <g id="rightFace">
+                <circle cx="438" cy="297" r="118" fill="none" stroke="url(#edgeGrad)" stroke-width="36"/>
+                <circle cx="438" cy="297" r="118" fill="none" stroke="url(#ringGrad)" stroke-width="28"/>
+                <circle cx="438" cy="297" r="118" fill="none" stroke="url(#coreGrad)" stroke-width="13" opacity="0.85" filter="url(#glowSm)"/>
+                <circle cx="438" cy="297" r="118" fill="none" stroke="#f5f7ff" stroke-width="3" opacity="0.9"/>
               </g>
             </defs>
-            <g class="ring-glow"><use href="#leftRing"/><use href="#rightRing"/></g>
-            <use href="#leftSolid" clip-path="url(#weaveBottom)"/>
+            <g class="ring-glow"><use href="#leftHalo"/><use href="#rightHalo"/></g>
+            <g>
+              <use href="#leftBody" transform="translate(15.2,19.2)"/><use href="#rightBody" transform="translate(15.2,19.2)"/>
+              <use href="#leftBody" transform="translate(13.3,16.8)"/><use href="#rightBody" transform="translate(13.3,16.8)"/>
+              <use href="#leftBody" transform="translate(11.4,14.4)"/><use href="#rightBody" transform="translate(11.4,14.4)"/>
+              <use href="#leftBody" transform="translate(9.5,12)"/><use href="#rightBody" transform="translate(9.5,12)"/>
+              <use href="#leftBody" transform="translate(7.6,9.6)"/><use href="#rightBody" transform="translate(7.6,9.6)"/>
+              <use href="#leftBody" transform="translate(5.7,7.2)"/><use href="#rightBody" transform="translate(5.7,7.2)"/>
+              <use href="#leftBody" transform="translate(3.8,4.8)"/><use href="#rightBody" transform="translate(3.8,4.8)"/>
+              <use href="#leftBody" transform="translate(1.9,2.4)"/><use href="#rightBody" transform="translate(1.9,2.4)"/>
+            </g>
+            <use href="#leftFace"/><use href="#rightFace"/>
+            <use href="#leftFace" clip-path="url(#weaveBottom)"/>
             <g class="ring-core">
               <circle cx="290" cy="262" r="130" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.5"/>
               <circle cx="438" cy="297" r="118" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.5"/>
@@ -926,8 +1046,8 @@
       <h2 class="cta-title reveal">Ready to <span class="accent">transform</span> how your business runs?</h2>
       <p class="cta-sub reveal">Let's find the exact combination of AI and automation that will have the biggest impact on your operations. No commitment, no pressure — just clarity.</p>
       <div class="cta-btns reveal">
-        <a href="mailto:contact@atrelo.com" class="btn-primary">Book a Free Consultation →</a>
-        <a href="mailto:contact@atrelo.com" class="btn-secondary">Send Us a Message</a>
+        <a href="https://wa.me/17879234248" target="_blank" class="btn-primary">Book a Free Consultation →</a>
+        <a href="mailto:atreloefficiency@gmail.com?subject=Solicitud%20de%20Consulta%20-%20Atrelo%20Efficiency&body=Hola%20equipo%20de%20Atrelo%20Efficiency%2C%0A%0AMe%20interesa%20agendar%20una%20consulta%20para%20hablar%20sobre%20c%C3%B3mo%20pueden%20ayudar%20a%20mi%20negocio.%0A%0ANombre%3A%20%0AEmpresa%3A%20%0ATel%C3%A9fono%3A%20%0A%C3%81rea%20de%20inter%C3%A9s%3A%20(AI%20Automation%20%2F%20CRM%20%2F%20Web%20Development%20%2F%20Custom%20Systems)%0A%0ADescripci%C3%B3n%20breve%20de%20lo%20que%20necesito%3A%0A%0AGracias%2C" class="btn-secondary">Send Us a Message</a>
       </div>
     </div>
   </div>
@@ -973,9 +1093,9 @@
     <div class="footer-col">
       <h4>Contact</h4>
       <ul>
-        <li><a href="mailto:contact@atrelo.com">contact@atrelo.com</a></li>
-        <li><a href="#cta">Book a Call</a></li>
-        <li><a href="#">LinkedIn</a></li>
+        <li><a href="https://wa.me/17879234248" target="_blank">WhatsApp: (787) 923-4248</a></li>
+        <li><a href="mailto:atreloefficiency@gmail.com">atreloefficiency@gmail.com</a></li>
+        <li><a href="https://wa.me/17879234248" target="_blank">Book a Call</a></li>
       </ul>
     </div>
   </div>
@@ -985,7 +1105,7 @@
       <a href="#" class="footer-social" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
       </a>
-      <a href="#" class="footer-social" aria-label="Email">
+      <a href="mailto:atreloefficiency@gmail.com" class="footer-social" aria-label="Email">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       </a>
     </div>
