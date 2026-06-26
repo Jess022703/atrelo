@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#eef0fc">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="tg" x1="430" y1="300" x2="770" y2="520" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#3a33de"/>
+        <stop offset="0.5" stop-color="#6a48dd"/>
+        <stop offset="1" stop-color="#a85fce"/>
+      </linearGradient>
+      <clipPath id="tw"><rect x="566" y="430" width="80" height="90"/></clipPath>
+    </defs>
+    <circle id="tl" cx="520" cy="400" r="92" fill="none" stroke="url(#tg)" stroke-width="38"/>
+    <circle cx="680" cy="400" r="92" fill="none" stroke="url(#tg)" stroke-width="38"/>
+    <use href="#tl" clip-path="url(#tw)"/>
+  </svg>
+</template>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *{ box-sizing:border-box; }
+    @keyframes markIn{
+      0%   { opacity:0; transform: rotate(-150deg) scale(.34); }
+      18%  { opacity:1; }
+      24%  { transform: rotate(7deg) scale(1.05); }
+      30%  { transform: rotate(0deg) scale(1); }
+      62%  { transform: rotate(0deg) scale(1); }
+      70%  { transform: rotate(0deg) scale(1.022); }
+      82%  { transform: rotate(0deg) scale(1); opacity:1; }
+      92%  { opacity:1; }
+      100% { opacity:0; transform: rotate(0deg) scale(1.12); }
+    }
+    @keyframes wordIn{
+      0%   { opacity:0; transform: translateY(28px); letter-spacing:3px; }
+      30%  { opacity:0; transform: translateY(28px); letter-spacing:3px; }
+      44%  { opacity:1; transform: translateY(0); letter-spacing:-1px; }
+      85%  { opacity:1; transform: translateY(0); letter-spacing:-1px; }
+      100% { opacity:0; transform: translateY(0); letter-spacing:-1px; }
+    }
+    @keyframes glowPulse{
+      0%,100% { opacity:.35; transform: scale(.9); }
+      30%     { opacity:.9;  transform: scale(1.05); }
+      82%     { opacity:.8;  transform: scale(1.02); }
+    }
+    @keyframes sheen{
+      0%   { background-position: 120% 0; }
+      100% { background-position: -20% 0; }
+    }
+  </style>
+</helmet>
+<div data-screen-label="Atrelo logo reveal" style="position:relative; width:100%; aspect-ratio:16/9; overflow:hidden; container-type:inline-size; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:38px; background:radial-gradient(120% 95% at 50% 28%, #f7f6ff 0%, #eef0fc 52%, #f3edfb 100%); font-family:'Poppins',sans-serif; --dur:{{ durStr }}; --play:{{ playState }};">
+
+  <!-- soft brand glow behind the mark -->
+  <div style="position:absolute; top:30%; left:50%; width:46%; aspect-ratio:1; transform:translate(-50%,-50%); border-radius:50%; background:radial-gradient(circle, rgba(108,80,222,.22) 0%, rgba(120,90,225,.10) 38%, rgba(120,90,225,0) 66%); filter:blur(6px); animation:glowPulse var(--dur,7s) cubic-bezier(.65,.05,.25,1) infinite; animation-play-state:var(--play,running); pointer-events:none;"></div>
+
+  <div style="width:42%; max-width:520px; transform-origin:center center; animation:markIn var(--dur,7s) cubic-bezier(.62,.02,.22,1) infinite; animation-play-state:var(--play,running); will-change:transform,opacity;">
+    <svg viewBox="0 0 1000 480" style="width:100%; height:auto; display:block; overflow:visible;">
+      <defs>
+        <linearGradient id="atreloGrad" gradientUnits="userSpaceOnUse" x1="255" y1="120" x2="745" y2="350">
+          <stop offset="0" stop-color="#3a33de"></stop>
+          <stop offset="0.36" stop-color="#5340e6"></stop>
+          <stop offset="0.64" stop-color="#7a4fd6"></stop>
+          <stop offset="1" stop-color="#a85fce"></stop>
+        </linearGradient>
+        <clipPath id="bottomWeave">
+          <rect x="466" y="290" width="120" height="120"></rect>
+        </clipPath>
+      </defs>
+      <!-- left ring -->
+      <circle id="atreloL" cx="406" cy="234" r="132" fill="none" stroke="url(#atreloGrad)" stroke-width="54"></circle>
+      <!-- right ring drawn over (in front at top crossing) -->
+      <circle cx="594" cy="234" r="132" fill="none" stroke="url(#atreloGrad)" stroke-width="54"></circle>
+      <!-- redraw left ring at bottom crossing so it weaves in front there -->
+      <use href="#atreloL" clip-path="url(#bottomWeave)"></use>
+    </svg>
+  </div>
+
+  <div data-comment-anchor="wordmark" style="font-size:5.6cqw; line-height:1; font-weight:700; letter-spacing:-1px; background:linear-gradient(95deg, #2c80d2 8%, #4d63de 42%, #7a52d2 72%, #9648c9 100%); background-size:220% 100%; -webkit-background-clip:text; background-clip:text; color:transparent; animation:wordIn var(--dur,7s) cubic-bezier(.62,.02,.22,1) infinite, sheen 4.5s linear infinite; animation-play-state:var(--play,running); will-change:opacity,transform; text-wrap:nowrap;">Atrelo Efficiency</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:960,&quot;height&quot;:540},&quot;speed&quot;:{&quot;editor&quot;:&quot;float&quot;,&quot;default&quot;:1,&quot;min&quot;:0.4,&quot;max&quot;:2,&quot;step&quot;:0.1,&quot;tsType&quot;:&quot;number&quot;},&quot;paused&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  renderVals(){
+    const speed = Number(this.props.speed) || 1;
+    return {
+      durStr: (7 / speed).toFixed(2) + 's',
+      playState: this.props.paused ? 'paused' : 'running'
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Atrelo Efficiency — AI automation, custom software, and CRM solutions for businesses in Puerto Rico and beyond.">
+  <meta property="og:title" content="Atrelo Efficiency">
+  <meta property="og:description" content="Engineering Business Efficiency Through AI. We help companies automate operations and build custom software.">
+  <meta property="og:type" content="website">
+  <title>Atrelo Efficiency</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-deep:    #050410;
+      --bg-dark:    #08071a;
+      --bg-mid:     #100c2c;
+      --bg-light:   #1c1444;
+      --blue:       #3f6dff;
+      --purple:     #7b3ff0;
+      --magenta:    #c44ce0;
+      --grad:       linear-gradient(95deg, #3f6dff 0%, #6a52f0 42%, #a14ee6 72%, #d65bff 100%);
+      --grad-text:  linear-gradient(95deg, #4f7cff 10%, #8a64f2 55%, #c45ce8 100%);
+      --text-main:  #f6f7ff;
+      --text-muted: #b8bee0;
+      --text-dim:   #9aa1cc;
+      --border:     rgba(255,255,255,.10);
+      --card-bg:    rgba(255,255,255,.035);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-deep);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes floatRing {
+      0%,100% { transform: rotateX(-7deg) rotateY(-13deg) translateY(0); }
+      50%      { transform: rotateX(-2deg) rotateY(-21deg) translateY(-18px); }
+    }
+    @keyframes glowPulse { 0%,100% { opacity:.55; } 50% { opacity:1; } }
+    @keyframes corePulse  { 0%,100% { opacity:.7;  } 50% { opacity:1; } }
+    @keyframes podiumPulse {
+      0%,100% { opacity:.42; transform:translateX(-50%) scaleX(1) scaleY(1); }
+      50%     { opacity:.8;  transform:translateX(-50%) scaleX(1.05) scaleY(1.12); }
+    }
+    @keyframes hazePulse  { 0%,100% { opacity:.55; transform:scale(1); } 50% { opacity:.9; transform:scale(1.08); } }
+    @keyframes aurora1    { 0%,100% { transform:translate(-6%,2%) scale(1); } 50% { transform:translate(6%,-4%) scale(1.18); } }
+    @keyframes aurora2    { 0%,100% { transform:translate(4%,-3%) scale(1.05); } 50% { transform:translate(-5%,5%) scale(1.2); } }
+    @keyframes aurora3    { 0%,100% { transform:translate(0,4%) scale(1); } 50% { transform:translate(-7%,-3%) scale(1.15); } }
+    @keyframes twinkle    { 0%,100% { opacity:.18; transform:scale(.6) rotate(0deg); } 50% { opacity:1; transform:scale(1) rotate(45deg); } }
+    @keyframes fadeUp     { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeIn     { from { opacity:0; } to { opacity:1; } }
+    @keyframes sheen      { 0% { background-position:120% 0; } 100% { background-position:-20% 0; } }
+    @keyframes splashSpin {
+      0%  { opacity:0; transform:rotate(-150deg) scale(.34); }
+      18% { opacity:1; }
+      60% { transform:rotate(7deg) scale(1.05); }
+      76% { transform:rotate(0deg) scale(1); }
+      100%{ transform:rotate(0deg) scale(1); }
+    }
+    @keyframes splashWord  { 0% { opacity:0; transform:translateY(26px); letter-spacing:4px; } 100% { opacity:1; transform:translateY(0); letter-spacing:-1px; } }
+    @keyframes splashOut   { 0% { opacity:1; transform:scale(1); } 100% { opacity:0; transform:scale(1.06); visibility:hidden; } }
+    @keyframes navSlide    { from { transform:translateY(-100%); opacity:0; } to { transform:translateY(0); opacity:1; } }
+    @keyframes cardFloat   { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-6px); } }
+    @keyframes countUp     { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes lineGrow    { from { width:0; } to { width:100%; } }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 5%;
+      background: rgba(5,4,16,.72);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      animation: navSlide .6s ease both;
+    }
+    .nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+    .nav-logo svg { width:38px; height:auto; }
+    .nav-logo span { font-weight:700; font-size:1.05rem; color:var(--text-main); white-space:nowrap; }
+    .nav-links { display:flex; gap:2rem; list-style:none; }
+    .nav-links a { color:var(--text-dim); text-decoration:none; font-size:.9rem; font-weight:500; transition:color .2s; }
+    .nav-links a:hover { color:var(--text-main); }
+    .nav-cta {
+      padding:9px 22px; border-radius:999px; font-size:.88rem; font-weight:600;
+      color:#fff; background:var(--grad); border:none; cursor:pointer;
+      box-shadow:0 4px 20px rgba(95,70,235,.4); transition:opacity .2s, transform .2s;
+      text-decoration:none; white-space:nowrap;
+    }
+    .nav-cta:hover { opacity:.88; transform:translateY(-1px); }
+    .nav-mobile-toggle { display:none; background:none; border:none; cursor:pointer; }
+    .nav-mobile-toggle span { display:block; width:24px; height:2px; background:var(--text-main); margin:5px 0; transition:.3s; }
+
+    /* ─── HERO ─── */
+    #hero {
+      position:relative; width:100%; aspect-ratio:16/9; overflow:hidden;
+      container-type:inline-size;
+      background: radial-gradient(135% 120% at 74% 40%, #1c1444 0%, #100c2c 34%, #08071a 64%, #050410 100%);
+    }
+    .aurora { position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0; mix-blend-mode:screen; }
+    .aurora div { position:absolute; border-radius:50%; }
+    .aurora-1 { top:-10%; left:34%; width:56%; height:120%; background:radial-gradient(closest-side,rgba(43,111,255,.5),rgba(43,111,255,0) 70%); filter:blur(60px); animation:aurora1 16s ease-in-out infinite; }
+    .aurora-2 { top:4%; left:54%; width:48%; height:112%; background:radial-gradient(closest-side,rgba(123,63,240,.46),rgba(123,63,240,0) 70%); filter:blur(72px); animation:aurora2 21s ease-in-out infinite; }
+    .aurora-3 { top:18%; left:62%; width:42%; height:92%; background:radial-gradient(closest-side,rgba(196,76,224,.4),rgba(196,76,224,0) 70%); filter:blur(64px); animation:aurora3 18s ease-in-out infinite; }
+    .aurora-4 { top:-6%; left:20%; width:36%; height:104%; background:radial-gradient(closest-side,rgba(54,197,255,.3),rgba(54,197,255,0) 70%); filter:blur(74px); animation:aurora2 24s ease-in-out infinite reverse; }
+
+    #hero-canvas { position:absolute; inset:0; width:100%; height:100%; display:block; z-index:1; }
+
+    .hero-haze {
+      position:absolute; top:38%; left:73%; width:46%; aspect-ratio:1;
+      transform:translate(-50%,-50%); border-radius:50%;
+      background:radial-gradient(circle, rgba(126,76,232,.55) 0%, rgba(96,70,230,.22) 36%, rgba(96,70,230,0) 66%);
+      filter:blur(8px); animation:hazePulse 5.8s ease-in-out infinite; pointer-events:none; z-index:2;
+    }
+
+    .hero-nav-bar {
+      position:absolute; top:0; left:0; right:0;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:2.4cqw 4cqw; z-index:6;
+      animation:fadeIn 1s ease 2.5s both;
+    }
+    .hero-nav-logo { display:flex; align-items:center; gap:.9cqw; }
+    .hero-nav-logo svg { width:3.6cqw; height:auto; }
+    .hero-nav-logo span { font-weight:700; font-size:1.55cqw; letter-spacing:-.2px; }
+    .hero-nav-links { display:flex; align-items:center; gap:2.4cqw; font-size:1.05cqw; color:#aeb4d6; }
+    .hero-nav-btn {
+      padding:.95cqw 1.7cqw; border-radius:999px; font-size:1.05cqw; font-weight:600;
+      color:#fff; background:linear-gradient(95deg,#3b6ef5,#7b3ff0);
+      box-shadow:0 6px 22px rgba(95,70,235,.45); white-space:nowrap;
+    }
+
+    .hero-body {
+      position:absolute; inset:0; display:flex; align-items:center;
+      padding:0 4cqw; z-index:5;
+    }
+    .hero-copy { width:47%; flex:none; padding-top:2cqw; }
+    .hero-eyebrow {
+      font-size:1.0cqw; font-weight:600; letter-spacing:.28em; color:#5b8cff;
+      margin-bottom:1.6cqw; animation:fadeUp .9s cubic-bezier(.62,.02,.22,1) 2.7s both;
+    }
+    .hero-h1 {
+      font-size:4.5cqw; line-height:1.04; font-weight:800; letter-spacing:-1.5px;
+      margin:0 0 1.8cqw; color:#f6f7ff; text-wrap:balance;
+      animation:fadeUp .9s cubic-bezier(.62,.02,.22,1) 2.85s both;
+    }
+    .hero-h1 .accent {
+      background:var(--grad-text); -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .hero-sub {
+      font-size:1.25cqw; line-height:1.6; color:#b8bee0; max-width:32cqw;
+      margin:0 0 2.4cqw; animation:fadeUp .9s cubic-bezier(.62,.02,.22,1) 3.0s both;
+    }
+    .hero-btns {
+      display:flex; gap:1.2cqw; align-items:center;
+      animation:fadeUp .9s cubic-bezier(.62,.02,.22,1) 3.15s both;
+    }
+    .hero-btn-primary {
+      display:flex; align-items:center; gap:.7cqw;
+      padding:1.1cqw 1.9cqw; border-radius:12px; font-size:1.15cqw; font-weight:600;
+      color:#fff; background:linear-gradient(95deg,#3b6ef5,#7b3ff0);
+      box-shadow:0 10px 30px rgba(95,70,235,.45); cursor:pointer; border:none; text-decoration:none;
+    }
+    .hero-btn-secondary {
+      display:flex; align-items:center; gap:.7cqw;
+      padding:1.1cqw 1.9cqw; border-radius:12px; font-size:1.15cqw; font-weight:600;
+      color:#dfe3ff; border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.03);
+      cursor:pointer; text-decoration:none;
+    }
+    .hero-meta { margin-top:2cqw; font-size:1.0cqw; color:#9aa1cc; animation:fadeUp .9s cubic-bezier(.62,.02,.22,1) 3.3s both; }
+    .hero-stars { color:#ffce4d; letter-spacing:2px; }
+
+    .hero-ring-stage {
+      position:relative; flex:1; height:100%;
+      display:flex; align-items:center; justify-content:center; perspective:1300px;
+    }
+    .hero-ring-wrap { position:relative; width:84%; transform-style:preserve-3d; animation:splashSpin 1.2s cubic-bezier(.2,.7,.2,1) 2.6s both; }
+    .podium-glow {
+      position:absolute; bottom:8%; left:50%; width:62%; height:9%;
+      transform:translateX(-50%); border-radius:50%;
+      background:radial-gradient(50% 100% at 50% 50%,rgba(150,110,255,.85) 0%,rgba(110,80,240,.35) 45%,rgba(110,80,240,0) 75%);
+      filter:blur(6px); animation:podiumPulse 4.25s ease-in-out infinite;
+    }
+    .podium-line {
+      position:absolute; bottom:9.5%; left:50%; width:40%; height:1.6%;
+      transform:translateX(-50%); border-radius:50%;
+      background:radial-gradient(50% 100% at 50% 50%,rgba(210,190,255,.9),rgba(210,190,255,0) 80%);
+      filter:blur(1px);
+    }
+    .ring-float { transform-style:preserve-3d; animation:floatRing 6.5s ease-in-out infinite; }
+    .ring-glow  { animation:glowPulse 3.4s ease-in-out infinite; }
+    .ring-core  { animation:corePulse 2.7s ease-in-out infinite; mix-blend-mode:screen; }
+
+    .sparkles { position:absolute; inset:0; pointer-events:none; z-index:7; }
+    .sparkle { position:absolute; }
+    .sparkle svg { display:block; }
+    .sparkle-1 { right:6.5%; bottom:15%; }
+    .sparkle-1 svg { width:2.6cqw; filter:drop-shadow(0 0 7px rgba(180,200,255,.7)); animation:twinkle 4.6s ease-in-out infinite; }
+    .sparkle-2 { right:33%; top:19%; }
+    .sparkle-2 svg { width:1.5cqw; filter:drop-shadow(0 0 6px rgba(180,200,255,.7)); animation:twinkle 5.4s ease-in-out .8s infinite; }
+    .sparkle-3 { right:11%; top:31%; }
+    .sparkle-3 svg { width:1.05cqw; filter:drop-shadow(0 0 5px rgba(180,200,255,.6)); animation:twinkle 6.1s ease-in-out 1.6s infinite; }
+
+    /* Splash overlay */
+    .splash {
+      position:absolute; inset:0; z-index:20;
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2.6cqw;
+      background:radial-gradient(135% 120% at 74% 40%, #1c1444 0%, #100c2c 34%, #08071a 64%, #050410 100%);
+      animation:splashOut .7s cubic-bezier(.6,.02,.3,1) 2.4s forwards;
+      pointer-events:none;
+    }
+    .splash-logo { width:27cqw; transform-origin:center center; animation:splashSpin 1.4s cubic-bezier(.2,.72,.2,1) both; }
+    .splash-word {
+      font-size:4.2cqw; font-weight:700; letter-spacing:-1px; line-height:1;
+      background:linear-gradient(95deg,#5b8cff 8%,#7d63ee 45%,#b657e0 80%,#d65bff 100%);
+      background-size:220% 100%; -webkit-background-clip:text; background-clip:text; color:transparent;
+      white-space:nowrap;
+      animation:splashWord 1s cubic-bezier(.2,.7,.2,1) .85s both, sheen 4.5s linear .85s infinite;
+    }
+
+    /* ─── SECTIONS ─── */
+    section { padding:7rem 5%; }
+
+    .section-label {
+      font-size:.8rem; font-weight:600; letter-spacing:.3em; color:#5b8cff;
+      text-transform:uppercase; margin-bottom:1rem;
+    }
+    .section-title {
+      font-size:clamp(2rem,4vw,3rem); font-weight:800; line-height:1.1;
+      letter-spacing:-1px; margin-bottom:1.25rem;
+    }
+    .section-title .accent { background:var(--grad-text); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .section-sub { font-size:1.05rem; color:var(--text-muted); max-width:560px; line-height:1.7; }
+
+    /* ─── SERVICES ─── */
+    #services { background:linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-dark) 100%); }
+    .services-header { text-align:center; margin-bottom:4rem; }
+    .services-header .section-sub { margin:0 auto; }
+
+    .services-grid {
+      display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:1.5rem;
+    }
+    .service-card {
+      position:relative; padding:2.5rem 2rem; border-radius:20px;
+      border:1px solid var(--border); background:var(--card-bg);
+      backdrop-filter:blur(8px); overflow:hidden;
+      transition:transform .3s ease, border-color .3s;
+    }
+    .service-card::before {
+      content:''; position:absolute; inset:0; border-radius:20px;
+      background:var(--grad); opacity:0; transition:opacity .3s;
+      z-index:0;
+    }
+    .service-card:hover { transform:translateY(-6px); border-color:rgba(100,100,255,.35); }
+    .service-card:hover::before { opacity:.05; }
+    .service-card > * { position:relative; z-index:1; }
+
+    .service-icon {
+      width:52px; height:52px; border-radius:14px; margin-bottom:1.5rem;
+      display:flex; align-items:center; justify-content:center;
+      background:linear-gradient(135deg,rgba(63,109,255,.25),rgba(196,76,224,.15));
+      border:1px solid rgba(100,120,255,.25);
+    }
+    .service-icon svg { width:26px; height:26px; }
+    .service-card h3 { font-size:1.2rem; font-weight:700; margin-bottom:.65rem; }
+    .service-card p  { font-size:.93rem; color:var(--text-muted); line-height:1.65; }
+    .service-tag {
+      display:inline-block; margin-top:1.5rem; padding:4px 12px; border-radius:999px;
+      font-size:.75rem; font-weight:600; color:#7b8fff;
+      background:rgba(80,100,255,.12); border:1px solid rgba(80,100,255,.2);
+    }
+
+    /* ─── STATS ─── */
+    #stats {
+      padding:5rem 5%; text-align:center;
+      background:linear-gradient(135deg, rgba(63,109,255,.06) 0%, rgba(196,76,224,.06) 100%);
+      border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+    }
+    .stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:3rem; max-width:900px; margin:0 auto; }
+    .stat-item h3 {
+      font-size:3rem; font-weight:800; letter-spacing:-2px;
+      background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .stat-item p { font-size:.95rem; color:var(--text-muted); margin-top:.4rem; }
+
+    /* ─── HOW IT WORKS ─── */
+    #process { background:var(--bg-dark); }
+    .process-header { margin-bottom:4rem; }
+    .process-steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:2rem; }
+    .process-step {
+      position:relative; padding:2.5rem 2rem; border-radius:20px;
+      border:1px solid var(--border); background:var(--card-bg);
+    }
+    .step-num {
+      font-size:3.5rem; font-weight:800; letter-spacing:-3px; line-height:1;
+      background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;
+      margin-bottom:1rem; opacity:.7;
+    }
+    .process-step h3 { font-size:1.1rem; font-weight:700; margin-bottom:.6rem; }
+    .process-step p  { font-size:.9rem; color:var(--text-muted); line-height:1.6; }
+
+    .process-connector {
+      display:none;
+      position:absolute; top:50%; left:100%; width:2rem; height:2px;
+      background:linear-gradient(90deg,rgba(100,130,255,.5),transparent);
+    }
+
+    /* ─── ABOUT ─── */
+    #about { background:linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-deep) 100%); }
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+    .about-copy .section-sub { max-width:480px; }
+    .about-highlights { margin-top:2.5rem; display:flex; flex-direction:column; gap:1rem; }
+    .about-highlight {
+      display:flex; align-items:flex-start; gap:1rem; padding:1.2rem;
+      border-radius:14px; border:1px solid var(--border); background:var(--card-bg);
+    }
+    .about-highlight-icon {
+      width:40px; height:40px; flex:none; border-radius:10px;
+      display:flex; align-items:center; justify-content:center;
+      background:linear-gradient(135deg,rgba(63,109,255,.2),rgba(196,76,224,.12));
+    }
+    .about-highlight-icon svg { width:20px; height:20px; }
+    .about-highlight div h4 { font-size:.95rem; font-weight:600; margin-bottom:.25rem; }
+    .about-highlight div p  { font-size:.85rem; color:var(--text-muted); }
+
+    .about-visual {
+      position:relative; border-radius:24px; overflow:hidden;
+      border:1px solid var(--border); background:var(--card-bg); aspect-ratio:4/3;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .about-rings { width:80%; max-width:380px; animation:floatRing 6s ease-in-out infinite; }
+    .about-glow-1 {
+      position:absolute; width:60%; height:60%; border-radius:50%;
+      background:radial-gradient(circle,rgba(63,109,255,.25),transparent 70%);
+      top:10%; left:5%; filter:blur(40px); animation:aurora1 12s ease-in-out infinite;
+    }
+    .about-glow-2 {
+      position:absolute; width:50%; height:50%; border-radius:50%;
+      background:radial-gradient(circle,rgba(196,76,224,.2),transparent 70%);
+      bottom:5%; right:5%; filter:blur(40px); animation:aurora2 15s ease-in-out infinite;
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    #testimonials { background:var(--bg-deep); }
+    .testimonials-header { text-align:center; margin-bottom:4rem; }
+    .testimonials-header .section-sub { margin:0 auto; }
+    .testimonials-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem; }
+    .testimonial-card {
+      padding:2rem; border-radius:20px; border:1px solid var(--border); background:var(--card-bg);
+      transition:transform .3s; display:flex; flex-direction:column;
+    }
+    .testimonial-card:hover { transform:translateY(-4px); }
+    .t-stars { color:#ffce4d; font-size:1rem; letter-spacing:2px; margin-bottom:1rem; }
+    .t-quote { font-size:.95rem; color:var(--text-muted); line-height:1.7; flex:1; font-style:italic; margin-bottom:1.5rem; }
+    .t-quote::before { content:'\201C'; }
+    .t-quote::after  { content:'\201D'; }
+    .t-author { display:flex; align-items:center; gap:.8rem; }
+    .t-avatar {
+      width:40px; height:40px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      background:var(--grad); font-weight:700; font-size:.9rem; color:#fff; flex:none;
+    }
+    .t-name { font-size:.9rem; font-weight:600; }
+    .t-role { font-size:.8rem; color:var(--text-dim); }
+
+    /* ─── CTA ─── */
+    #cta {
+      text-align:center; padding:8rem 5%;
+      background:linear-gradient(135deg, rgba(63,109,255,.08) 0%, rgba(196,76,224,.08) 100%);
+      border-top:1px solid var(--border);
+      position:relative; overflow:hidden;
+    }
+    .cta-glow-left  { position:absolute; top:-20%; left:-10%; width:50%; height:120%; background:radial-gradient(circle,rgba(63,109,255,.12),transparent 70%); filter:blur(60px); }
+    .cta-glow-right { position:absolute; bottom:-20%; right:-10%; width:50%; height:120%; background:radial-gradient(circle,rgba(196,76,224,.1),transparent 70%); filter:blur(60px); }
+    .cta-inner { position:relative; z-index:1; max-width:680px; margin:0 auto; }
+    .cta-badge {
+      display:inline-flex; align-items:center; gap:.5rem; padding:6px 16px; border-radius:999px;
+      font-size:.8rem; font-weight:600; color:#7b8fff;
+      background:rgba(80,100,255,.12); border:1px solid rgba(80,100,255,.2);
+      margin-bottom:2rem;
+    }
+    .cta-title { font-size:clamp(2rem,4.5vw,3.2rem); font-weight:800; line-height:1.1; letter-spacing:-1px; margin-bottom:1.25rem; }
+    .cta-sub { font-size:1.05rem; color:var(--text-muted); margin-bottom:3rem; line-height:1.7; }
+    .cta-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+    .btn-primary {
+      display:inline-flex; align-items:center; gap:.6rem;
+      padding:14px 28px; border-radius:12px; font-size:1rem; font-weight:600;
+      color:#fff; background:var(--grad); border:none; cursor:pointer;
+      box-shadow:0 12px 32px rgba(95,70,235,.45); transition:opacity .2s, transform .2s;
+      text-decoration:none; font-family:inherit;
+    }
+    .btn-primary:hover { opacity:.88; transform:translateY(-2px); }
+    .btn-secondary {
+      display:inline-flex; align-items:center; gap:.6rem;
+      padding:14px 28px; border-radius:12px; font-size:1rem; font-weight:600;
+      color:var(--text-muted); border:1px solid var(--border); background:var(--card-bg);
+      cursor:pointer; transition:border-color .2s, color .2s, transform .2s;
+      text-decoration:none; font-family:inherit;
+    }
+    .btn-secondary:hover { border-color:rgba(100,120,255,.4); color:var(--text-main); transform:translateY(-2px); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding:4rem 5% 2.5rem; border-top:1px solid var(--border);
+      background:var(--bg-deep);
+    }
+    .footer-top { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; margin-bottom:3rem; }
+    .footer-brand .nav-logo { margin-bottom:1rem; }
+    .footer-brand p { font-size:.88rem; color:var(--text-dim); line-height:1.7; max-width:280px; }
+    .footer-col h4 { font-size:.88rem; font-weight:700; margin-bottom:1rem; color:var(--text-main); }
+    .footer-col ul { list-style:none; display:flex; flex-direction:column; gap:.6rem; }
+    .footer-col ul a { font-size:.85rem; color:var(--text-dim); text-decoration:none; transition:color .2s; }
+    .footer-col ul a:hover { color:var(--text-main); }
+    .footer-bottom {
+      padding-top:2rem; border-top:1px solid var(--border);
+      display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;
+    }
+    .footer-bottom p { font-size:.8rem; color:var(--text-dim); }
+    .footer-socials { display:flex; gap:1rem; }
+    .footer-social {
+      width:36px; height:36px; border-radius:8px; border:1px solid var(--border);
+      display:flex; align-items:center; justify-content:center;
+      color:var(--text-dim); text-decoration:none; transition:border-color .2s, color .2s;
+    }
+    .footer-social:hover { border-color:rgba(100,120,255,.4); color:var(--text-main); }
+    .footer-social svg { width:16px; height:16px; }
+
+    /* ─── RESPONSIVE ─── */
+    @media(max-width:1100px) {
+      .about-grid { grid-template-columns:1fr; gap:3rem; }
+      .about-visual { max-width:480px; }
+    }
+    @media(max-width:900px) {
+      .footer-top { grid-template-columns:1fr 1fr; }
+    }
+    @media(max-width:768px) {
+      nav { padding:14px 5%; }
+      .nav-links, .nav-cta { display:none; }
+      .nav-mobile-toggle { display:block; }
+      #hero { aspect-ratio:auto; min-height:100svh; }
+      .hero-nav-bar { padding:4cqw; }
+      .hero-nav-logo svg { width:6cqw; }
+      .hero-nav-logo span { font-size:3cqw; }
+      .hero-nav-links { display:none; }
+      .hero-nav-btn { font-size:2.5cqw; padding:2cqw 3.5cqw; }
+      .hero-body { flex-direction:column; align-items:flex-start; padding:16cqw 5cqw 5cqw; }
+      .hero-copy { width:100%; }
+      .hero-eyebrow { font-size:2cqw; }
+      .hero-h1 { font-size:7cqw; }
+      .hero-sub { font-size:2.8cqw; max-width:100%; }
+      .hero-btn-primary, .hero-btn-secondary { font-size:2.5cqw; padding:2.5cqw 4cqw; }
+      .hero-meta { font-size:2.2cqw; }
+      .hero-ring-stage { display:none; }
+      section { padding:5rem 5%; }
+      .footer-top { grid-template-columns:1fr; }
+    }
+    @media(max-width:480px) {
+      .stats-grid { grid-template-columns:1fr 1fr; }
+      .cta-btns { flex-direction:column; align-items:center; }
+    }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal {
+      opacity:0; transform:translateY(24px);
+      transition:opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .reveal-delay-1 { transition-delay:.1s; }
+    .reveal-delay-2 { transition-delay:.2s; }
+    .reveal-delay-3 { transition-delay:.3s; }
+    .reveal-delay-4 { transition-delay:.4s; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ NAV ═══════════════════════════ -->
+<nav id="main-nav">
+  <a href="#" class="nav-logo">
+    <svg viewBox="0 0 64 40" overflow="visible" fill="none">
+      <defs>
+        <linearGradient id="ng" x1="6" y1="6" x2="58" y2="34" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#4f7cff"/>
+          <stop offset="1" stop-color="#c44ce0"/>
+        </linearGradient>
+        <clipPath id="nw"><rect x="30" y="22" width="14" height="16"/></clipPath>
+      </defs>
+      <circle id="nL" cx="24" cy="20" r="13" stroke="url(#ng)" stroke-width="6"/>
+      <circle cx="42" cy="20" r="13" stroke="url(#ng)" stroke-width="6"/>
+      <use href="#nL" clip-path="url(#nw)"/>
+    </svg>
+    <span>Atrelo Efficiency</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">How It Works</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#testimonials">Clients</a></li>
+  </ul>
+  <a href="mailto:contact@atrelo.com" class="nav-cta">Book a Consultation</a>
+  <button class="nav-mobile-toggle" aria-label="Toggle menu" onclick="document.getElementById('mobile-menu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile menu -->
+<div id="mobile-menu" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; z-index:99; background:rgba(5,4,16,.97); backdrop-filter:blur(20px); flex-direction:column; align-items:center; justify-content:center; gap:2rem;" class="mobile-menu-inner">
+  <button onclick="document.getElementById('mobile-menu').classList.remove('open')" style="position:absolute;top:20px;right:5%;background:none;border:none;color:white;font-size:1.5rem;cursor:pointer;">✕</button>
+  <a href="#services" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;" onclick="document.getElementById('mobile-menu').classList.remove('open')">Services</a>
+  <a href="#process" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;" onclick="document.getElementById('mobile-menu').classList.remove('open')">How It Works</a>
+  <a href="#about" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;" onclick="document.getElementById('mobile-menu').classList.remove('open')">About</a>
+  <a href="#testimonials" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;" onclick="document.getElementById('mobile-menu').classList.remove('open')">Clients</a>
+  <a href="mailto:contact@atrelo.com" class="btn-primary">Book a Consultation</a>
+</div>
+
+<style>
+  #mobile-menu.open { display:flex !important; }
+</style>
+
+<!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+<section id="hero" style="padding:0;">
+  <!-- Aurora background -->
+  <div class="aurora">
+    <div class="aurora-1"></div>
+    <div class="aurora-2"></div>
+    <div class="aurora-3"></div>
+    <div class="aurora-4"></div>
+  </div>
+
+  <!-- Constellation canvas -->
+  <canvas id="hero-canvas"></canvas>
+
+  <!-- Purple haze -->
+  <div class="hero-haze"></div>
+
+  <!-- Nav inside hero -->
+  <div class="hero-nav-bar">
+    <div class="hero-nav-logo">
+      <svg viewBox="0 0 64 40" overflow="visible" fill="none">
+        <defs>
+          <linearGradient id="hng" x1="6" y1="6" x2="58" y2="34" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#4f7cff"/><stop offset="1" stop-color="#c44ce0"/>
+          </linearGradient>
+          <clipPath id="hnw"><rect x="30" y="22" width="14" height="16"/></clipPath>
+        </defs>
+        <circle id="hnL" cx="24" cy="20" r="13" stroke="url(#hng)" stroke-width="6"/>
+        <circle cx="42" cy="20" r="13" stroke="url(#hng)" stroke-width="6"/>
+        <use href="#hnL" clip-path="url(#hnw)"/>
+      </svg>
+      <span>Atrelo Efficiency</span>
+    </div>
+    <div class="hero-nav-links">
+      <a href="#services" style="text-decoration:none;color:#aeb4d6;">Services</a>
+      <a href="#process" style="text-decoration:none;color:#aeb4d6;">How It Works</a>
+      <a href="#about" style="text-decoration:none;color:#aeb4d6;">About</a>
+    </div>
+    <div class="hero-nav-btn">Book a Consultation</div>
+  </div>
+
+  <!-- Hero content -->
+  <div class="hero-body">
+    <div class="hero-copy">
+      <div class="hero-eyebrow">AI AUTOMATION · CUSTOM SOFTWARE · REAL RESULTS</div>
+      <h1 class="hero-h1">Engineering Business Efficiency <span class="accent">Through AI.</span></h1>
+      <p class="hero-sub">We help companies automate operations, build custom software, and implement AI solutions that drive measurable growth.</p>
+      <div class="hero-btns">
+        <a href="mailto:contact@atrelo.com" class="hero-btn-primary">Book a Consultation <span>→</span></a>
+        <a href="#services" class="hero-btn-secondary">Explore Solutions <span style="color:#8fa0e8;">→</span></a>
+      </div>
+      <div class="hero-meta">
+        <span class="hero-stars">★★★★★</span>&nbsp;&nbsp;5.0 from 50+ reviews · Based in Puerto Rico
+      </div>
+    </div>
+
+    <!-- Ring visual -->
+    <div class="hero-ring-stage">
+      <div class="hero-ring-wrap">
+        <div class="podium-glow"></div>
+        <div class="podium-line"></div>
+        <div class="ring-float">
+          <svg viewBox="0 0 760 620" style="width:100%;height:auto;display:block;overflow:visible;">
+            <defs>
+              <linearGradient id="ringGrad" x1="170" y1="130" x2="560" y2="420" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#3f6dff"/><stop offset="0.42" stop-color="#6a52f0"/>
+                <stop offset="0.72" stop-color="#a14ee6"/><stop offset="1" stop-color="#d65bff"/>
+              </linearGradient>
+              <linearGradient id="coreGrad" x1="170" y1="130" x2="560" y2="420" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#bcd2ff"/><stop offset="0.5" stop-color="#dac9ff"/>
+                <stop offset="1" stop-color="#ffc7f4"/>
+              </linearGradient>
+              <filter id="glowHuge" x="-90%" y="-90%" width="280%" height="280%"><feGaussianBlur stdDeviation="28"/></filter>
+              <filter id="glowBig"  x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="14"/></filter>
+              <filter id="glowSm"   x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="3"/></filter>
+              <clipPath id="weaveBottom"><rect x="300" y="318" width="118" height="108"/></clipPath>
+              <g id="leftRing">
+                <circle cx="290" cy="262" r="130" fill="none" stroke="url(#ringGrad)" stroke-width="74" opacity="0.32" filter="url(#glowHuge)"/>
+                <circle cx="290" cy="262" r="130" fill="none" stroke="url(#ringGrad)" stroke-width="52" opacity="0.75" filter="url(#glowBig)"/>
+                <circle cx="290" cy="262" r="130" fill="none" stroke="url(#ringGrad)" stroke-width="34"/>
+                <circle cx="290" cy="262" r="130" fill="none" stroke="url(#coreGrad)" stroke-width="17" opacity="0.9" filter="url(#glowSm)"/>
+                <circle cx="290" cy="262" r="130" fill="none" stroke="#f5f7ff" stroke-width="4" opacity="0.95"/>
+              </g>
+              <g id="rightRing">
+                <circle cx="438" cy="297" r="118" fill="none" stroke="url(#ringGrad)" stroke-width="70" opacity="0.32" filter="url(#glowHuge)"/>
+                <circle cx="438" cy="297" r="118" fill="none" stroke="url(#ringGrad)" stroke-width="50" opacity="0.75" filter="url(#glowBig)"/>
+                <circle cx="438" cy="297" r="118" fill="none" stroke="url(#ringGrad)" stroke-width="34"/>
+                <circle cx="438" cy="297" r="118" fill="none" stroke="url(#coreGrad)" stroke-width="17" opacity="0.9" filter="url(#glowSm)"/>
+                <circle cx="438" cy="297" r="118" fill="none" stroke="#f5f7ff" stroke-width="4" opacity="0.95"/>
+              </g>
+              <g id="leftSolid">
+                <circle cx="290" cy="262" r="130" fill="none" stroke="url(#ringGrad)" stroke-width="34"/>
+                <circle cx="290" cy="262" r="130" fill="none" stroke="url(#coreGrad)" stroke-width="17" opacity="0.9"/>
+                <circle cx="290" cy="262" r="130" fill="none" stroke="#f5f7ff" stroke-width="4" opacity="0.95"/>
+              </g>
+            </defs>
+            <g class="ring-glow"><use href="#leftRing"/><use href="#rightRing"/></g>
+            <use href="#leftSolid" clip-path="url(#weaveBottom)"/>
+            <g class="ring-core">
+              <circle cx="290" cy="262" r="130" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.5"/>
+              <circle cx="438" cy="297" r="118" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.5"/>
+            </g>
+            <ellipse cx="225" cy="150" rx="26" ry="12" fill="#eaf0ff" opacity="0.75" filter="url(#glowSm)" transform="rotate(-32 225 150)"/>
+            <ellipse cx="392" cy="195" rx="20" ry="9" fill="#f6e6ff" opacity="0.7"  filter="url(#glowSm)" transform="rotate(-28 392 195)"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sparkles -->
+  <div class="sparkles">
+    <div class="sparkle sparkle-1"><svg viewBox="0 0 24 24"><path d="M12 0 C13 8 16 11 24 12 C16 13 13 16 12 24 C11 16 8 13 0 12 C8 11 11 8 12 0 Z" fill="#eaf0ff"/></svg></div>
+    <div class="sparkle sparkle-2"><svg viewBox="0 0 24 24"><path d="M12 0 C13 8 16 11 24 12 C16 13 13 16 12 24 C11 16 8 13 0 12 C8 11 11 8 12 0 Z" fill="#dfe8ff"/></svg></div>
+    <div class="sparkle sparkle-3"><svg viewBox="0 0 24 24"><path d="M12 0 C13 8 16 11 24 12 C16 13 13 16 12 24 C11 16 8 13 0 12 C8 11 11 8 12 0 Z" fill="#e7eeff"/></svg></div>
+  </div>
+
+  <!-- Splash/reveal overlay -->
+  <div class="splash">
+    <div class="splash-logo">
+      <svg viewBox="0 0 540 320" style="width:100%;height:auto;display:block;overflow:visible;">
+        <defs>
+          <linearGradient id="sGrad" x1="150" y1="90" x2="400" y2="230" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#3f6dff"/><stop offset="0.45" stop-color="#6a52f0"/>
+            <stop offset="0.75" stop-color="#a14ee6"/><stop offset="1" stop-color="#d65bff"/>
+          </linearGradient>
+          <linearGradient id="sCore" x1="150" y1="90" x2="400" y2="230" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#bcd2ff"/><stop offset="0.5" stop-color="#dac9ff"/>
+            <stop offset="1" stop-color="#ffc7f4"/>
+          </linearGradient>
+          <filter id="sGlow"   x="-70%" y="-70%" width="240%" height="240%"><feGaussianBlur stdDeviation="9"/></filter>
+          <filter id="sGlowSm" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="2.4"/></filter>
+          <clipPath id="sWeave"><rect x="232" y="178" width="60" height="70"/></clipPath>
+          <g id="sLeft">
+            <circle cx="212" cy="158" r="80" fill="none" stroke="url(#sGrad)" stroke-width="40" opacity="0.5" filter="url(#sGlow)"/>
+            <circle cx="212" cy="158" r="80" fill="none" stroke="url(#sGrad)" stroke-width="22"/>
+            <circle cx="212" cy="158" r="80" fill="none" stroke="url(#sCore)" stroke-width="10" opacity="0.9" filter="url(#sGlowSm)"/>
+            <circle cx="212" cy="158" r="80" fill="none" stroke="#f5f7ff" stroke-width="2.5" opacity="0.95"/>
+          </g>
+          <g id="sRight">
+            <circle cx="318" cy="158" r="80" fill="none" stroke="url(#sGrad)" stroke-width="40" opacity="0.5" filter="url(#sGlow)"/>
+            <circle cx="318" cy="158" r="80" fill="none" stroke="url(#sGrad)" stroke-width="22"/>
+            <circle cx="318" cy="158" r="80" fill="none" stroke="url(#sCore)" stroke-width="10" opacity="0.9" filter="url(#sGlowSm)"/>
+            <circle cx="318" cy="158" r="80" fill="none" stroke="#f5f7ff" stroke-width="2.5" opacity="0.95"/>
+          </g>
+          <g id="sLeftSolid">
+            <circle cx="212" cy="158" r="80" fill="none" stroke="url(#sGrad)" stroke-width="22"/>
+            <circle cx="212" cy="158" r="80" fill="none" stroke="url(#sCore)" stroke-width="10" opacity="0.9"/>
+            <circle cx="212" cy="158" r="80" fill="none" stroke="#f5f7ff" stroke-width="2.5" opacity="0.95"/>
+          </g>
+        </defs>
+        <use href="#sLeft"/><use href="#sRight"/>
+        <use href="#sLeftSolid" clip-path="url(#sWeave)"/>
+      </svg>
+    </div>
+    <div class="splash-word">Atrelo Efficiency</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ SERVICES ═══════════════════════════ -->
+<section id="services">
+  <div class="services-header reveal">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">Solutions built for <span class="accent">real impact</span></h2>
+    <p class="section-sub">We combine intelligent automation with custom software development to help businesses operate at a higher level.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7b8fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+        </svg>
+      </div>
+      <h3>AI Automation</h3>
+      <p>We design and deploy intelligent workflows that eliminate manual tasks, reduce errors, and let your team focus on what matters most.</p>
+      <span class="service-tag">Workflow Automation</span>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7b8fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/>
+          <path d="M7 8h10"/><path d="M7 12h6"/>
+        </svg>
+      </div>
+      <h3>CRM Solutions</h3>
+      <p>Custom CRM systems adapted to your business model — track leads, manage clients, and automate follow-ups with precision.</p>
+      <span class="service-tag">Customer Management</span>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7b8fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+        </svg>
+      </div>
+      <h3>Web Development</h3>
+      <p>Modern, high-performance web applications and marketing sites designed to convert visitors into customers and grow your brand online.</p>
+      <span class="service-tag">Full-Stack Development</span>
+    </div>
+    <div class="service-card reveal reveal-delay-4">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7b8fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="9" height="9" rx="1"/><rect x="13" y="2" width="9" height="9" rx="1"/>
+          <rect x="2" y="13" width="9" height="9" rx="1"/><rect x="13" y="13" width="9" height="9" rx="1"/>
+        </svg>
+      </div>
+      <h3>Custom Systems</h3>
+      <p>Internal tools, dashboards, and bespoke software built precisely to your operational needs — no compromises, no workarounds.</p>
+      <span class="service-tag">Bespoke Software</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ STATS ═══════════════════════════ -->
+<div id="stats">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <h3>50+</h3>
+      <p>Clients served</p>
+    </div>
+    <div class="stat-item reveal reveal-delay-1">
+      <h3>5.0</h3>
+      <p>Average rating</p>
+    </div>
+    <div class="stat-item reveal reveal-delay-2">
+      <h3>3x</h3>
+      <p>Avg. efficiency gain</p>
+    </div>
+    <div class="stat-item reveal reveal-delay-3">
+      <h3>PR</h3>
+      <p>Based in Puerto Rico</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ PROCESS ═══════════════════════════ -->
+<section id="process">
+  <div class="process-header reveal">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">From idea to <span class="accent">results</span>, fast.</h2>
+    <p class="section-sub">A focused, three-phase engagement that delivers value from day one — no bloated timelines or unnecessary overhead.</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step reveal reveal-delay-1">
+      <div class="step-num">01</div>
+      <h3>Discovery Call</h3>
+      <p>We learn your business, your goals, and the specific bottlenecks holding you back. No generic pitches — just a focused conversation about what you actually need.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-2">
+      <div class="step-num">02</div>
+      <h3>Solution Design</h3>
+      <p>We map out the right combination of AI automation, software, and integrations for your situation. You get a clear roadmap with timelines and outcomes.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-3">
+      <div class="step-num">03</div>
+      <h3>Build & Launch</h3>
+      <p>We execute with speed and precision — delivering working software, training your team, and staying on until results are measurable and operations are smooth.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ ABOUT ═══════════════════════════ -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-copy">
+      <div class="section-label reveal">About Us</div>
+      <h2 class="section-title reveal">Built in Puerto Rico. <span class="accent">Built for the world.</span></h2>
+      <p class="section-sub reveal">Atrelo Efficiency was founded by Jesiel N. Jiménez Rodríguez with a clear mission: to bring enterprise-grade technology and AI to the businesses that need it most — SMBs, corporations, and government clients in Puerto Rico and beyond.</p>
+      <div class="about-highlights">
+        <div class="about-highlight reveal reveal-delay-1">
+          <div class="about-highlight-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#7b8fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div>
+            <h4>Trusted by 50+ businesses</h4>
+            <p>A proven track record with clients ranging from small local businesses to larger corporate and government entities.</p>
+          </div>
+        </div>
+        <div class="about-highlight reveal reveal-delay-2">
+          <div class="about-highlight-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#7b8fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div>
+            <h4>Fast delivery, no fluff</h4>
+            <p>We skip the bloat and go straight to building. Most clients see working prototypes within the first two weeks.</p>
+          </div>
+        </div>
+        <div class="about-highlight reveal reveal-delay-3">
+          <div class="about-highlight-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#7b8fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div>
+            <h4>Local roots, global reach</h4>
+            <p>Deep understanding of the Puerto Rico business landscape, with the capability to serve clients anywhere in the world.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-visual reveal">
+      <div class="about-glow-1"></div>
+      <div class="about-glow-2"></div>
+      <svg class="about-rings" viewBox="0 0 540 320" overflow="visible" fill="none">
+        <defs>
+          <linearGradient id="abGrad" x1="150" y1="90" x2="400" y2="230" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#3f6dff"/><stop offset="0.45" stop-color="#6a52f0"/>
+            <stop offset="0.75" stop-color="#a14ee6"/><stop offset="1" stop-color="#d65bff"/>
+          </linearGradient>
+          <linearGradient id="abCore" x1="150" y1="90" x2="400" y2="230" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#bcd2ff"/><stop offset="0.5" stop-color="#dac9ff"/>
+            <stop offset="1" stop-color="#ffc7f4"/>
+          </linearGradient>
+          <filter id="abGlow"   x="-70%" y="-70%" width="240%" height="240%"><feGaussianBlur stdDeviation="12"/></filter>
+          <filter id="abGlowSm" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="3"/></filter>
+          <clipPath id="abWeave"><rect x="232" y="178" width="60" height="70"/></clipPath>
+          <g id="abL">
+            <circle cx="212" cy="158" r="80" fill="none" stroke="url(#abGrad)" stroke-width="40" opacity="0.4" filter="url(#abGlow)"/>
+            <circle cx="212" cy="158" r="80" fill="none" stroke="url(#abGrad)" stroke-width="22"/>
+            <circle cx="212" cy="158" r="80" fill="none" stroke="url(#abCore)" stroke-width="10" opacity="0.9" filter="url(#abGlowSm)"/>
+            <circle cx="212" cy="158" r="80" fill="none" stroke="#f5f7ff" stroke-width="2.5" opacity="0.9"/>
+          </g>
+          <g id="abR">
+            <circle cx="318" cy="158" r="80" fill="none" stroke="url(#abGrad)" stroke-width="40" opacity="0.4" filter="url(#abGlow)"/>
+            <circle cx="318" cy="158" r="80" fill="none" stroke="url(#abGrad)" stroke-width="22"/>
+            <circle cx="318" cy="158" r="80" fill="none" stroke="url(#abCore)" stroke-width="10" opacity="0.9" filter="url(#abGlowSm)"/>
+            <circle cx="318" cy="158" r="80" fill="none" stroke="#f5f7ff" stroke-width="2.5" opacity="0.9"/>
+          </g>
+          <g id="abLS">
+            <circle cx="212" cy="158" r="80" fill="none" stroke="url(#abGrad)" stroke-width="22"/>
+            <circle cx="212" cy="158" r="80" fill="none" stroke="url(#abCore)" stroke-width="10" opacity="0.9"/>
+            <circle cx="212" cy="158" r="80" fill="none" stroke="#f5f7ff" stroke-width="2.5" opacity="0.9"/>
+          </g>
+        </defs>
+        <use href="#abL"/><use href="#abR"/>
+        <use href="#abLS" clip-path="url(#abWeave)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ TESTIMONIALS ═══════════════════════════ -->
+<section id="testimonials">
+  <div class="testimonials-header reveal">
+    <div class="section-label">Client Stories</div>
+    <h2 class="section-title">Results that <span class="accent">speak for themselves</span></h2>
+    <p class="section-sub">From automating daily operations to building systems from scratch, here's what our clients have to say.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal reveal-delay-1">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-quote">They built us a fully automated lead management system in three weeks. What used to take hours per day now runs on autopilot. The ROI was immediate.</p>
+      <div class="t-author">
+        <div class="t-avatar">MR</div>
+        <div>
+          <div class="t-name">Miguel R.</div>
+          <div class="t-role">CEO, Real Estate Firm · Puerto Rico</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal reveal-delay-2">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-quote">Atrelo transformed our client onboarding. What was a 2-day manual process is now fully automated and takes under 20 minutes. Incredible work.</p>
+      <div class="t-author">
+        <div class="t-avatar">LC</div>
+        <div>
+          <div class="t-name">Laura C.</div>
+          <div class="t-role">Operations Director · Healthcare Group</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal reveal-delay-3">
+      <div class="t-stars">★★★★★</div>
+      <p class="t-quote">The custom dashboard they built gave us visibility we never had before. We can now make decisions in real time instead of waiting on weekly reports.</p>
+      <div class="t-author">
+        <div class="t-avatar">AT</div>
+        <div>
+          <div class="t-name">Andrés T.</div>
+          <div class="t-role">COO · Logistics Company · PR</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ CTA ═══════════════════════════ -->
+<section id="cta" style="padding:0;">
+  <div style="padding:8rem 5%; position:relative; overflow:hidden;">
+    <div class="cta-glow-left"></div>
+    <div class="cta-glow-right"></div>
+    <div class="cta-inner">
+      <div class="cta-badge reveal">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Free 30-Minute Discovery Call
+      </div>
+      <h2 class="cta-title reveal">Ready to <span class="accent">transform</span> how your business runs?</h2>
+      <p class="cta-sub reveal">Let's find the exact combination of AI and automation that will have the biggest impact on your operations. No commitment, no pressure — just clarity.</p>
+      <div class="cta-btns reveal">
+        <a href="mailto:contact@atrelo.com" class="btn-primary">Book a Free Consultation →</a>
+        <a href="mailto:contact@atrelo.com" class="btn-secondary">Send Us a Message</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo" style="display:inline-flex;margin-bottom:1rem;">
+        <svg viewBox="0 0 64 40" width="34" height="auto" overflow="visible" fill="none">
+          <defs>
+            <linearGradient id="fg" x1="6" y1="6" x2="58" y2="34" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#4f7cff"/><stop offset="1" stop-color="#c44ce0"/>
+            </linearGradient>
+            <clipPath id="fw"><rect x="30" y="22" width="14" height="16"/></clipPath>
+          </defs>
+          <circle id="fL" cx="24" cy="20" r="13" stroke="url(#fg)" stroke-width="6"/>
+          <circle cx="42" cy="20" r="13" stroke="url(#fg)" stroke-width="6"/>
+          <use href="#fL" clip-path="url(#fw)"/>
+        </svg>
+        <span style="font-weight:700;font-size:1rem;color:var(--text-main);margin-left:10px;align-self:center;">Atrelo Efficiency</span>
+      </a>
+      <p>AI automation and custom software for businesses that want to operate at a higher level. Based in Puerto Rico.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">AI Automation</a></li>
+        <li><a href="#services">CRM Solutions</a></li>
+        <li><a href="#services">Web Development</a></li>
+        <li><a href="#services">Custom Systems</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#process">How It Works</a></li>
+        <li><a href="#testimonials">Client Stories</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:contact@atrelo.com">contact@atrelo.com</a></li>
+        <li><a href="#cta">Book a Call</a></li>
+        <li><a href="#">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Atrelo Efficiency · Founded by Jesiel N. Jiménez Rodríguez · Puerto Rico</p>
+    <div class="footer-socials">
+      <a href="#" class="footer-social" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="#" class="footer-social" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════ SCRIPTS ═══════════════════════════ -->
+<script>
+  /* ── Constellation canvas ── */
+  (function() {
+    const cv = document.getElementById('hero-canvas');
+    if (!cv) return;
+    const ctx = cv.getContext('2d');
+    const NODES = [];
+    const N = 78, maxD = 118;
+    let W = 0, H = 0, dpr = 1;
+
+    function seed() {
+      NODES.length = 0;
+      for (let i = 0; i < N; i++) {
+        const right = Math.random() < 0.58;
+        NODES.push({
+          x:  right ? W * (0.5 + Math.random() * 0.5) : Math.random() * W,
+          y:  Math.random() * H,
+          vx: (Math.random() - 0.5) * 0.12,
+          vy: (Math.random() - 0.5) * 0.12,
+          r:  Math.random() * 1.6 + 0.5,
+          tw: Math.random() * Math.PI * 2,
+          ts: 0.6 + Math.random() * 1.3
+        });
+      }
+    }
+
+    function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const rc = cv.getBoundingClientRect();
+      W = rc.width || cv.clientWidth;
+      H = rc.height || cv.clientHeight;
+      cv.width  = Math.max(1, Math.round(W * dpr));
+      cv.height = Math.max(1, Math.round(H * dpr));
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      seed();
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    let raf;
+    function tick(ts) {
+      raf = requestAnimationFrame(tick);
+      ctx.clearRect(0, 0, W, H);
+      for (const n of NODES) {
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > W) n.vx *= -1;
+        if (n.y < 0 || n.y > H) n.vy *= -1;
+      }
+      for (let i = 0; i < NODES.length; i++) {
+        const a = NODES[i];
+        for (let j = i + 1; j < NODES.length; j++) {
+          const b = NODES[j];
+          const dx = a.x - b.x, dy = a.y - b.y;
+          const d = Math.hypot(dx, dy);
+          if (d < maxD) {
+            ctx.strokeStyle = 'rgba(130,150,255,' + ((1 - d / maxD) * 0.15) + ')';
+            ctx.lineWidth = 0.6;
+            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+          }
+        }
+      }
+      for (const n of NODES) {
+        const tw = 0.5 + 0.5 * Math.sin(ts * 0.001 * n.ts + n.tw);
+        ctx.fillStyle = 'rgba(175,195,255,' + (0.22 + tw * 0.55) + ')';
+        ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, 6.2832); ctx.fill();
+      }
+    }
+    requestAnimationFrame(tick);
+  })();
+
+  /* ── Scroll reveal ── */
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  /* ── Nav scroll style ── */
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('main-nav');
+    if (window.scrollY > 60) {
+      nav.style.background = 'rgba(5,4,16,.92)';
+    } else {
+      nav.style.background = 'rgba(5,4,16,.72)';
+    }
+  });
+
+  /* ── Smooth anchor scroll ── */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+</script>
+</body>
+</html>

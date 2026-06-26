@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    *{ box-sizing:border-box; }
+    @keyframes introRing{ from{ opacity:0; transform:scale(.72) rotate(-10deg); } to{ opacity:1; transform:scale(1) rotate(0deg); } }
+    @keyframes floatRing{
+      0%   { transform: rotateX(-7deg) rotateY(-13deg) translateY(0px); }
+      50%  { transform: rotateX(-2deg) rotateY(-21deg) translateY(-16px); }
+      100% { transform: rotateX(-7deg) rotateY(-13deg) translateY(0px); }
+    }
+    @keyframes glowPulse{ 0%,100%{ opacity:.55; } 50%{ opacity:1; } }
+    @keyframes corePulse{ 0%,100%{ opacity:.7; } 50%{ opacity:1; } }
+    @keyframes podiumPulse{
+      0%,100%{ opacity:.42; transform:translateX(-50%) scaleX(1) scaleY(1); }
+      50%    { opacity:.8;  transform:translateX(-50%) scaleX(1.05) scaleY(1.12); }
+    }
+    @keyframes hazePulse{ 0%,100%{ opacity:.55; transform:scale(1); } 50%{ opacity:.9; transform:scale(1.08); } }
+    @keyframes fadeUp{ from{ opacity:0; transform:translateY(26px); } to{ opacity:1; transform:translateY(0); } }
+    @keyframes fadeIn{ from{ opacity:0; } to{ opacity:1; } }
+    @keyframes sheen{ 0%{ background-position:120% 0; } 100%{ background-position:-20% 0; } }
+    @keyframes splashSpin{ 0%{ opacity:0; transform:rotate(-150deg) scale(.34); } 18%{ opacity:1; } 60%{ transform:rotate(7deg) scale(1.05); } 76%{ transform:rotate(0deg) scale(1); } 100%{ transform:rotate(0deg) scale(1); } }
+    @keyframes splashWord{ 0%{ opacity:0; transform:translateY(26px); letter-spacing:4px; } 100%{ opacity:1; transform:translateY(0); letter-spacing:-1px; } }
+    @keyframes splashOut{ 0%{ opacity:1; transform:scale(1); } 100%{ opacity:0; transform:scale(1.07); visibility:hidden; } }
+    @keyframes aurora1{ 0%,100%{ transform:translate(-6%,2%) scale(1); } 50%{ transform:translate(6%,-4%) scale(1.18); } }
+    @keyframes aurora2{ 0%,100%{ transform:translate(4%,-3%) scale(1.05); } 50%{ transform:translate(-5%,5%) scale(1.2); } }
+    @keyframes aurora3{ 0%,100%{ transform:translate(0,4%) scale(1); } 50%{ transform:translate(-7%,-3%) scale(1.15); } }
+    @keyframes twinkle{ 0%,100%{ opacity:.18; transform:scale(.6) rotate(0deg); } 50%{ opacity:1; transform:scale(1) rotate(45deg); } }
+  </style>
+</helmet>
+<div data-screen-label="Atrelo hero animation" style="position:relative; width:100%; aspect-ratio:16/9; overflow:hidden; container-type:inline-size; font-family:'Poppins',sans-serif; color:#eef0ff; background:radial-gradient(135% 120% at 74% 40%, #1c1444 0%, #100c2c 34%, #08071a 64%, #050410 100%); --play:{{ playState }}; --gd:{{ gdStr }};">
+
+  <!-- flowing aurora light ribbons (like the promo) -->
+  <div style="position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0; mix-blend-mode:screen;">
+    <div style="position:absolute; top:-10%; left:34%; width:56%; height:120%; border-radius:50%; background:radial-gradient(closest-side, rgba(43,111,255,.5), rgba(43,111,255,0) 70%); filter:blur(60px); animation:aurora1 16s ease-in-out infinite; animation-play-state:var(--play);"></div>
+    <div style="position:absolute; top:4%; left:54%; width:48%; height:112%; border-radius:50%; background:radial-gradient(closest-side, rgba(123,63,240,.46), rgba(123,63,240,0) 70%); filter:blur(72px); animation:aurora2 21s ease-in-out infinite; animation-play-state:var(--play);"></div>
+    <div style="position:absolute; top:18%; left:62%; width:42%; height:92%; border-radius:50%; background:radial-gradient(closest-side, rgba(196,76,224,.4), rgba(196,76,224,0) 70%); filter:blur(64px); animation:aurora3 18s ease-in-out infinite; animation-play-state:var(--play);"></div>
+    <div style="position:absolute; top:-6%; left:20%; width:36%; height:104%; border-radius:50%; background:radial-gradient(closest-side, rgba(54,197,255,.3), rgba(54,197,255,0) 70%); filter:blur(74px); animation:aurora2 24s ease-in-out infinite reverse; animation-play-state:var(--play);"></div>
+  </div>
+
+  <!-- network / constellation -->
+  <canvas ref="{{ canvasRef }}" style="position:absolute; inset:0; width:100%; height:100%; display:block;"></canvas>
+
+  <!-- purple haze behind rings -->
+  <div style="position:absolute; top:38%; left:73%; width:46%; aspect-ratio:1; transform:translate(-50%,-50%); border-radius:50%; background:radial-gradient(circle, rgba(126,76,232,.55) 0%, rgba(96,70,230,.22) 36%, rgba(96,70,230,0) 66%); filter:blur(8px); animation:hazePulse calc(var(--gd,3.4s)*1.7) ease-in-out infinite; animation-play-state:var(--play); pointer-events:none;"></div>
+
+  <!-- top nav -->
+  <div style="position:absolute; top:0; left:0; right:0; display:flex; align-items:center; justify-content:space-between; padding:2.4cqw 4cqw; z-index:6; animation:fadeIn 1s ease 2.5s both;">
+    <div style="display:flex; align-items:center; gap:.9cqw;">
+      <svg viewBox="0 0 64 40" style="width:3.6cqw; height:auto; display:block; overflow:visible;">
+        <defs><linearGradient id="navg" x1="6" y1="6" x2="58" y2="34" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4f7cff"></stop><stop offset="1" stop-color="#c44ce0"></stop></linearGradient><clipPath id="navw"><rect x="30" y="22" width="14" height="16"></rect></clipPath></defs>
+        <circle id="navL" cx="24" cy="20" r="13" fill="none" stroke="url(#navg)" stroke-width="6"></circle>
+        <circle cx="42" cy="20" r="13" fill="none" stroke="url(#navg)" stroke-width="6"></circle>
+        <use href="#navL" clip-path="url(#navw)"></use>
+      </svg>
+      <span style="font-weight:700; font-size:1.55cqw; letter-spacing:-.2px;">Atrelo Efficiency</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:2.4cqw; font-size:1.05cqw; color:#aeb4d6;">
+      <sc-for list="{{ navLinks }}" as="link" hint-placeholder-count="5"><span style="white-space:nowrap;">{{ link }}</span></sc-for>
+    </div>
+    <div style="padding:.95cqw 1.7cqw; border-radius:999px; font-size:1.05cqw; font-weight:600; color:#fff; background:linear-gradient(95deg,#3b6ef5,#7b3ff0); box-shadow:0 6px 22px rgba(95,70,235,.45); white-space:nowrap;">{{ btn1 }}</div>
+  </div>
+
+  <!-- hero row -->
+  <div style="position:absolute; inset:0; display:flex; align-items:center; padding:0 4cqw; z-index:5;">
+
+    <!-- left copy -->
+    <div style="width:47%; flex:none; padding-top:2cqw;">
+      <div style="font-size:1.0cqw; font-weight:600; letter-spacing:.28em; color:#5b8cff; margin-bottom:1.6cqw; animation:fadeUp .9s cubic-bezier(.62,.02,.22,1) both; animation-delay:2.7s;">{{ eyebrow }}</div>
+      <h1 style="font-size:4.5cqw; line-height:1.04; font-weight:800; letter-spacing:-1.5px; margin:0 0 1.8cqw; color:#f6f7ff; text-wrap:balance; animation:fadeUp .9s cubic-bezier(.62,.02,.22,1) both; animation-delay:2.85s;">{{ headLead }}<span style="background:linear-gradient(95deg,#4f7cff 10%,#8a64f2 55%,#c45ce8 100%); -webkit-background-clip:text; background-clip:text; color:transparent;">{{ headAccent }}</span></h1>
+      <p style="font-size:1.25cqw; line-height:1.6; color:#b8bee0; max-width:32cqw; margin:0 0 2.4cqw; animation:fadeUp .9s cubic-bezier(.62,.02,.22,1) both; animation-delay:3.0s;">{{ sub }}</p>
+      <div style="display:flex; gap:1.2cqw; align-items:center; animation:fadeUp .9s cubic-bezier(.62,.02,.22,1) both; animation-delay:3.15s;">
+        <div style="display:flex; align-items:center; gap:.7cqw; padding:1.1cqw 1.9cqw; border-radius:12px; font-size:1.15cqw; font-weight:600; color:#fff; background:linear-gradient(95deg,#3b6ef5,#7b3ff0); box-shadow:0 10px 30px rgba(95,70,235,.45);">{{ btn1 }}<span style="font-size:1.3cqw;">→</span></div>
+        <div style="display:flex; align-items:center; gap:.7cqw; padding:1.1cqw 1.9cqw; border-radius:12px; font-size:1.15cqw; font-weight:600; color:#dfe3ff; border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.03);">{{ btn2 }}<span style="font-size:1.3cqw; color:#8fa0e8;">→</span></div>
+      </div>
+      <div style="margin-top:2cqw; font-size:1.0cqw; color:#9aa1cc; animation:fadeUp .9s cubic-bezier(.62,.02,.22,1) both; animation-delay:3.3s;"><span style="color:#ffce4d; letter-spacing:2px;">★★★★★</span>&nbsp;&nbsp;{{ metaLine }}</div>
+    </div>
+
+    <!-- ring stage -->
+    <div style="position:relative; flex:1; height:100%; display:flex; align-items:center; justify-content:center; perspective:1300px;">
+      <div style="position:relative; width:84%; transform-style:preserve-3d; animation:introRing 1.2s cubic-bezier(.2,.7,.2,1) 2.6s both;">
+
+        <!-- podium glow -->
+        <div style="position:absolute; bottom:8%; left:50%; width:62%; height:9%; transform:translateX(-50%); border-radius:50%; background:radial-gradient(50% 100% at 50% 50%, rgba(150,110,255,.85) 0%, rgba(110,80,240,.35) 45%, rgba(110,80,240,0) 75%); filter:blur(6px); animation:podiumPulse calc(var(--gd,3.4s)*1.25) ease-in-out infinite; animation-play-state:var(--play);"></div>
+        <div style="position:absolute; bottom:9.5%; left:50%; width:40%; height:1.6%; transform:translateX(-50%); border-radius:50%; background:radial-gradient(50% 100% at 50% 50%, rgba(210,190,255,.9), rgba(210,190,255,0) 80%); filter:blur(1px);"></div>
+
+        <!-- floating rings -->
+        <div style="transform-style:preserve-3d; animation:floatRing calc(var(--gd,3.4s)*1.9) ease-in-out infinite; animation-play-state:var(--play);">
+          <svg viewBox="0 0 760 620" style="width:100%; height:auto; display:block; overflow:visible;">
+            <defs>
+              <linearGradient id="ringGrad" x1="170" y1="130" x2="560" y2="420" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#3f6dff"></stop>
+                <stop offset="0.42" stop-color="#6a52f0"></stop>
+                <stop offset="0.72" stop-color="#a14ee6"></stop>
+                <stop offset="1" stop-color="#d65bff"></stop>
+              </linearGradient>
+              <linearGradient id="coreGrad" x1="170" y1="130" x2="560" y2="420" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#bcd2ff"></stop>
+                <stop offset="0.5" stop-color="#dac9ff"></stop>
+                <stop offset="1" stop-color="#ffc7f4"></stop>
+              </linearGradient>
+              <filter id="glowHuge" x="-90%" y="-90%" width="280%" height="280%"><feGaussianBlur stdDeviation="28"></feGaussianBlur></filter>
+              <filter id="glowBig" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="14"></feGaussianBlur></filter>
+              <filter id="glowSm" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="3"></feGaussianBlur></filter>
+              <clipPath id="weaveBottom"><rect x="300" y="318" width="118" height="108"></rect></clipPath>
+              <g id="leftRing">
+                <circle cx="290" cy="262" r="130" fill="none" stroke="url(#ringGrad)" stroke-width="74" opacity="0.32" filter="url(#glowHuge)"></circle>
+                <circle cx="290" cy="262" r="130" fill="none" stroke="url(#ringGrad)" stroke-width="52" opacity="0.75" filter="url(#glowBig)"></circle>
+                <circle cx="290" cy="262" r="130" fill="none" stroke="url(#ringGrad)" stroke-width="34"></circle>
+                <circle cx="290" cy="262" r="130" fill="none" stroke="url(#coreGrad)" stroke-width="17" opacity="0.9" filter="url(#glowSm)"></circle>
+                <circle cx="290" cy="262" r="130" fill="none" stroke="#f5f7ff" stroke-width="4" opacity="0.95"></circle>
+              </g>
+              <g id="rightRing">
+                <circle cx="438" cy="297" r="118" fill="none" stroke="url(#ringGrad)" stroke-width="70" opacity="0.32" filter="url(#glowHuge)"></circle>
+                <circle cx="438" cy="297" r="118" fill="none" stroke="url(#ringGrad)" stroke-width="50" opacity="0.75" filter="url(#glowBig)"></circle>
+                <circle cx="438" cy="297" r="118" fill="none" stroke="url(#ringGrad)" stroke-width="34"></circle>
+                <circle cx="438" cy="297" r="118" fill="none" stroke="url(#coreGrad)" stroke-width="17" opacity="0.9" filter="url(#glowSm)"></circle>
+                <circle cx="438" cy="297" r="118" fill="none" stroke="#f5f7ff" stroke-width="4" opacity="0.95"></circle>
+              </g>
+              <g id="leftSolid">
+                <circle cx="290" cy="262" r="130" fill="none" stroke="url(#ringGrad)" stroke-width="34"></circle>
+                <circle cx="290" cy="262" r="130" fill="none" stroke="url(#coreGrad)" stroke-width="17" opacity="0.9"></circle>
+                <circle cx="290" cy="262" r="130" fill="none" stroke="#f5f7ff" stroke-width="4" opacity="0.95"></circle>
+              </g>
+            </defs>
+
+            <!-- breathing glow layer -->
+            <g style="animation:glowPulse var(--gd,3.4s) ease-in-out infinite; animation-play-state:var(--play);">
+              <use href="#leftRing"></use>
+              <use href="#rightRing"></use>
+            </g>
+            <!-- weave: left ring back in front at lower crossing -->
+            <use href="#leftSolid" clip-path="url(#weaveBottom)"></use>
+            <!-- hot core re-pulse for neon life -->
+            <g style="animation:corePulse calc(var(--gd,3.4s)*0.8) ease-in-out infinite; animation-play-state:var(--play); mix-blend-mode:screen;">
+              <circle cx="290" cy="262" r="130" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.5"></circle>
+              <circle cx="438" cy="297" r="118" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.5"></circle>
+            </g>
+            <!-- specular hotspots -->
+            <ellipse cx="225" cy="150" rx="26" ry="12" fill="#eaf0ff" opacity="0.75" filter="url(#glowSm)" transform="rotate(-32 225 150)"></ellipse>
+            <ellipse cx="392" cy="195" rx="20" ry="9" fill="#f6e6ff" opacity="0.7" filter="url(#glowSm)" transform="rotate(-28 392 195)"></ellipse>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- sparkle accents (like the promo) -->
+  <div style="position:absolute; inset:0; pointer-events:none; z-index:7;">
+    <svg viewBox="0 0 24 24" style="position:absolute; right:6.5%; bottom:15%; width:2.6cqw; height:auto; filter:drop-shadow(0 0 7px rgba(180,200,255,.7)); animation:twinkle 4.6s ease-in-out infinite; animation-play-state:var(--play);"><path d="M12 0 C13 8 16 11 24 12 C16 13 13 16 12 24 C11 16 8 13 0 12 C8 11 11 8 12 0 Z" fill="#eaf0ff"></path></svg>
+    <svg viewBox="0 0 24 24" style="position:absolute; right:33%; top:19%; width:1.5cqw; height:auto; filter:drop-shadow(0 0 6px rgba(180,200,255,.7)); animation:twinkle 5.4s ease-in-out .8s infinite; animation-play-state:var(--play);"><path d="M12 0 C13 8 16 11 24 12 C16 13 13 16 12 24 C11 16 8 13 0 12 C8 11 11 8 12 0 Z" fill="#dfe8ff"></path></svg>
+    <svg viewBox="0 0 24 24" style="position:absolute; right:11%; top:31%; width:1.05cqw; height:auto; filter:drop-shadow(0 0 5px rgba(180,200,255,.6)); animation:twinkle 6.1s ease-in-out 1.6s infinite; animation-play-state:var(--play);"><path d="M12 0 C13 8 16 11 24 12 C16 13 13 16 12 24 C11 16 8 13 0 12 C8 11 11 8 12 0 Z" fill="#e7eeff"></path></svg>
+  </div>
+
+  <!-- intro logo reveal overlay (plays once, hands off to hero) -->
+  <div style="position: absolute; inset: 0; z-index: 20; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.6cqw; background: radial-gradient(135% 120% at 74% 40%, #1c1444 0%, #100c2c 34%, #08071a 64%, #050410 100%); animation: splashOut .7s cubic-bezier(.6,.02,.3,1) 2.4s forwards; pointer-events: none; left: 0px; top: 1px">
+    <div style="width:27cqw; transform-origin:center center; animation:splashSpin 1.4s cubic-bezier(.2,.72,.2,1) both;">
+      <svg viewBox="0 0 540 320" style="width:100%; height:auto; display:block; overflow:visible;">
+        <defs>
+          <linearGradient id="sGrad" x1="150" y1="90" x2="400" y2="230" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#3f6dff"></stop><stop offset="0.45" stop-color="#6a52f0"></stop><stop offset="0.75" stop-color="#a14ee6"></stop><stop offset="1" stop-color="#d65bff"></stop>
+          </linearGradient>
+          <linearGradient id="sCore" x1="150" y1="90" x2="400" y2="230" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#bcd2ff"></stop><stop offset="0.5" stop-color="#dac9ff"></stop><stop offset="1" stop-color="#ffc7f4"></stop>
+          </linearGradient>
+          <filter id="sGlow" x="-70%" y="-70%" width="240%" height="240%"><feGaussianBlur stdDeviation="9"></feGaussianBlur></filter>
+          <filter id="sGlowSm" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="2.4"></feGaussianBlur></filter>
+          <clipPath id="sWeave"><rect x="232" y="178" width="60" height="70"></rect></clipPath>
+          <g id="sLeft">
+            <circle cx="212" cy="158" r="80" fill="none" stroke="url(#sGrad)" stroke-width="40" opacity="0.5" filter="url(#sGlow)"></circle>
+            <circle cx="212" cy="158" r="80" fill="none" stroke="url(#sGrad)" stroke-width="22"></circle>
+            <circle cx="212" cy="158" r="80" fill="none" stroke="url(#sCore)" stroke-width="10" opacity="0.9" filter="url(#sGlowSm)"></circle>
+            <circle cx="212" cy="158" r="80" fill="none" stroke="#f5f7ff" stroke-width="2.5" opacity="0.95"></circle>
+          </g>
+          <g id="sRight">
+            <circle cx="318" cy="158" r="80" fill="none" stroke="url(#sGrad)" stroke-width="40" opacity="0.5" filter="url(#sGlow)"></circle>
+            <circle cx="318" cy="158" r="80" fill="none" stroke="url(#sGrad)" stroke-width="22"></circle>
+            <circle cx="318" cy="158" r="80" fill="none" stroke="url(#sCore)" stroke-width="10" opacity="0.9" filter="url(#sGlowSm)"></circle>
+            <circle cx="318" cy="158" r="80" fill="none" stroke="#f5f7ff" stroke-width="2.5" opacity="0.95"></circle>
+          </g>
+          <g id="sLeftSolid">
+            <circle cx="212" cy="158" r="80" fill="none" stroke="url(#sGrad)" stroke-width="22"></circle>
+            <circle cx="212" cy="158" r="80" fill="none" stroke="url(#sCore)" stroke-width="10" opacity="0.9"></circle>
+            <circle cx="212" cy="158" r="80" fill="none" stroke="#f5f7ff" stroke-width="2.5" opacity="0.95"></circle>
+          </g>
+        </defs>
+        <use href="#sLeft"></use>
+        <use href="#sRight"></use>
+        <use href="#sLeftSolid" clip-path="url(#sWeave)"></use>
+      </svg>
+    </div>
+    <div style="font-size:4.2cqw; font-weight:700; letter-spacing:-1px; line-height:1; background:linear-gradient(95deg,#5b8cff 8%,#7d63ee 45%,#b657e0 80%,#d65bff 100%); background-size:220% 100%; -webkit-background-clip:text; background-clip:text; color:transparent; white-space:nowrap; animation:splashWord 1s cubic-bezier(.2,.7,.2,1) .85s both, sheen 4.5s linear .85s infinite;">Atrelo Efficiency</div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:720},&quot;lang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;English&quot;,&quot;options&quot;:[&quot;English&quot;,&quot;Spanish&quot;],&quot;tsType&quot;:&quot;string&quot;},&quot;speed&quot;:{&quot;editor&quot;:&quot;float&quot;,&quot;default&quot;:1,&quot;min&quot;:0.4,&quot;max&quot;:2,&quot;step&quot;:0.1,&quot;tsType&quot;:&quot;number&quot;},&quot;paused&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  canvasRef = React.createRef();
+
+  renderVals(){
+    const lang = this.props.lang || 'English';
+    const speed = Number(this.props.speed) || 1;
+    const en = {
+      navLinks: ['Home','Services','Solutions','Case Studies','About'],
+      eyebrow: 'AI AUTOMATION. CUSTOM SOFTWARE. REAL RESULTS.',
+      headLead: 'Engineering Business Efficiency ',
+      headAccent: 'Through AI.',
+      sub: 'We help companies automate operations, build custom software, and implement AI solutions that drive measurable growth.',
+      btn1: 'Book a Consultation',
+      btn2: 'Explore Solutions',
+      metaLine: '5.0  from 50+ reviews'
+    };
+    const es = {
+      navLinks: ['Inicio','Servicios','Soluciones','Casos de \u00c9xito','Nosotros'],
+      eyebrow: 'TECNOLOG\u00cdA E INTELIGENCIA ARTIFICIAL',
+      headLead: 'Eficiencia inteligente para negocios ',
+      headAccent: 'que quieren crecer.',
+      sub: 'Transformamos procesos complejos en soluciones simples con IA, automatizaci\u00f3n y desarrollo a la medida.',
+      btn1: 'Agenda una Consulta',
+      btn2: 'Conoce m\u00e1s',
+      metaLine: 'Con base en Puerto Rico. Sirviendo al mundo.'
+    };
+    const t = lang === 'Spanish' ? es : en;
+    return {
+      ...t,
+      playState: this.props.paused ? 'paused' : 'running',
+      gdStr: (3.4 / speed).toFixed(2) + 's',
+      canvasRef: this.canvasRef
+    };
+  }
+
+  componentDidMount(){
+    const cv = this.canvasRef.current;
+    if(!cv) return;
+    const ctx = cv.getContext('2d');
+    const NODES = [];
+    const N = 78, maxD = 118;
+    let W = 0, H = 0, dpr = 1;
+    const seed = () => {
+      for(let i=0;i<N;i++){
+        const right = Math.random() < 0.58;
+        NODES.push({
+          x: right ? W*(0.5+Math.random()*0.5) : Math.random()*W,
+          y: Math.random()*H,
+          vx: (Math.random()-0.5)*0.12,
+          vy: (Math.random()-0.5)*0.12,
+          r: Math.random()*1.6+0.5,
+          tw: Math.random()*Math.PI*2,
+          ts: 0.6+Math.random()*1.3
+        });
+      }
+    };
+    const resize = () => {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const rc = cv.getBoundingClientRect();
+      W = rc.width || cv.clientWidth; H = rc.height || cv.clientHeight;
+      cv.width = Math.max(1, Math.round(W*dpr));
+      cv.height = Math.max(1, Math.round(H*dpr));
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      if(NODES.length === 0) seed();
+    };
+    resize();
+    this._onResize = resize;
+    window.addEventListener('resize', this._onResize);
+
+    const tick = (ts) => {
+      this._raf = requestAnimationFrame(tick);
+      const paused = !!this.props.paused;
+      ctx.clearRect(0,0,W,H);
+      if(!paused){
+        for(const n of NODES){
+          n.x += n.vx; n.y += n.vy;
+          if(n.x < 0 || n.x > W) n.vx *= -1;
+          if(n.y < 0 || n.y > H) n.vy *= -1;
+        }
+      }
+      for(let i=0;i<NODES.length;i++){
+        const a = NODES[i];
+        for(let j=i+1;j<NODES.length;j++){
+          const b = NODES[j];
+          const dx = a.x-b.x, dy = a.y-b.y;
+          const d = Math.hypot(dx,dy);
+          if(d < maxD){
+            const o = (1 - d/maxD) * 0.15;
+            ctx.strokeStyle = 'rgba(130,150,255,'+o+')';
+            ctx.lineWidth = 0.6;
+            ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+          }
+        }
+      }
+      for(const n of NODES){
+        const tw = 0.5 + 0.5*Math.sin(ts*0.001*n.ts + n.tw);
+        const a = 0.22 + tw*0.55;
+        ctx.fillStyle = 'rgba(175,195,255,'+a+')';
+        ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,6.2832); ctx.fill();
+      }
+    };
+    this._raf = requestAnimationFrame(tick);
+  }
+
+  componentWillUnmount(){
+    if(this._raf) cancelAnimationFrame(this._raf);
+    if(this._onResize) window.removeEventListener('resize', this._onResize);
+  }
+}
+</script>
+</body>
+</html>
