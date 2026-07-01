@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Atrelo Efficiency — AI automation, custom software, and CRM solutions for businesses in Puerto Rico and beyond.">
+  <meta name="description" content="Atrelo Efficiency — custom software, AI automation, and CRM solutions for SMBs, corporations, and government agencies across Puerto Rico and the Caribbean.">
   <meta property="og:title" content="Atrelo Efficiency">
-  <meta property="og:description" content="Engineering Business Efficiency Through AI. We help companies automate operations and build custom software.">
+  <meta property="og:description" content="Custom software and engineered AI automation for real businesses in Puerto Rico and the Caribbean.">
   <meta property="og:type" content="website">
   <title>Atrelo Efficiency</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -175,7 +175,6 @@
       cursor:pointer; text-decoration:none;
     }
     .hero-meta { margin-top:2cqw; font-size:1.0cqw; color:#9aa1cc; animation:fadeUp .9s cubic-bezier(.62,.02,.22,1) 3.3s both; }
-    .hero-stars { color:#ffce4d; letter-spacing:2px; }
 
     .hero-ring-stage {
       position:relative; flex:1; height:100%;
@@ -224,6 +223,23 @@
       white-space:nowrap;
       animation:splashWord 1s cubic-bezier(.2,.7,.2,1) .85s both, sheen 4.5s linear .85s infinite;
     }
+
+    /* ─── EVENT BANNER ─── */
+    #event-banner {
+      padding:2.5rem 5%; text-align:center;
+      background:linear-gradient(135deg, rgba(63,109,255,.1) 0%, rgba(196,76,224,.1) 100%);
+      border-bottom:1px solid var(--border);
+      display:flex; align-items:center; justify-content:center; gap:1.5rem; flex-wrap:wrap;
+    }
+    #event-banner p { font-size:1rem; font-weight:600; color:var(--text-main); margin:0; }
+    #event-banner p .accent { background:var(--grad-text); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    #event-banner a {
+      display:inline-flex; align-items:center; gap:.5rem; padding:8px 18px; border-radius:999px;
+      font-size:.85rem; font-weight:600; color:#dfe3ff; border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.03); text-decoration:none; white-space:nowrap;
+      transition:border-color .2s, color .2s;
+    }
+    #event-banner a:hover { border-color:rgba(100,120,255,.4); color:var(--text-main); }
 
     /* ─── SECTIONS ─── */
     section { padding:7rem 5%; }
@@ -347,28 +363,8 @@
       bottom:5%; right:5%; filter:blur(40px); animation:aurora2 15s ease-in-out infinite;
     }
 
-    /* ─── TESTIMONIALS ─── */
-    #testimonials { background:var(--bg-deep); }
-    .testimonials-header { text-align:center; margin-bottom:4rem; }
-    .testimonials-header .section-sub { margin:0 auto; }
-    .testimonials-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem; }
-    .testimonial-card {
-      padding:2rem; border-radius:20px; border:1px solid var(--border); background:var(--card-bg);
-      transition:transform .3s; display:flex; flex-direction:column;
-    }
-    .testimonial-card:hover { transform:translateY(-4px); }
-    .t-stars { color:#ffce4d; font-size:1rem; letter-spacing:2px; margin-bottom:1rem; }
-    .t-quote { font-size:.95rem; color:var(--text-muted); line-height:1.7; flex:1; font-style:italic; margin-bottom:1.5rem; }
-    .t-quote::before { content:'\201C'; }
-    .t-quote::after  { content:'\201D'; }
-    .t-author { display:flex; align-items:center; gap:.8rem; }
-    .t-avatar {
-      width:40px; height:40px; border-radius:50%;
-      display:flex; align-items:center; justify-content:center;
-      background:var(--grad); font-weight:700; font-size:.9rem; color:#fff; flex:none;
-    }
-    .t-name { font-size:.9rem; font-weight:600; }
-    .t-role { font-size:.8rem; color:var(--text-dim); }
+    /* ─── CASE STUDY ─── */
+    #case-study { background:var(--bg-deep); }
 
     /* ─── CTA ─── */
     #cta {
@@ -516,15 +512,13 @@
       /* Sections */
       section { padding:4rem 6%; }
       #stats  { padding:3.5rem 6%; }
+      #event-banner { padding:1.75rem 6%; flex-direction:column; gap:1rem; }
 
       /* Services — single column on small screens */
       .services-grid { grid-template-columns:1fr; }
 
       /* Process — single column */
       .process-steps { grid-template-columns:1fr; }
-
-      /* Testimonials — single column */
-      .testimonials-grid { grid-template-columns:1fr; }
 
       /* About */
       .about-grid { grid-template-columns:1fr; gap:2.5rem; }
@@ -597,7 +591,7 @@
     <li><a href="#services">Services</a></li>
     <li><a href="#process">How It Works</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#testimonials">Clients</a></li>
+    <li><a href="#case-study">Case Study</a></li>
   </ul>
   <a href="mailto:atreloefficiency@gmail.com?subject=Solicitud%20de%20Consulta%20-%20Atrelo%20Efficiency&body=Hola%20equipo%20de%20Atrelo%20Efficiency%2C%0A%0AMe%20interesa%20agendar%20una%20consulta%20para%20hablar%20sobre%20c%C3%B3mo%20pueden%20ayudar%20a%20mi%20negocio.%0A%0ANombre%3A%20%0AEmpresa%3A%20%0ATel%C3%A9fono%3A%20%0A%C3%81rea%20de%20inter%C3%A9s%3A%20(AI%20Automation%20%2F%20CRM%20%2F%20Web%20Development%20%2F%20Custom%20Systems)%0A%0ADescripci%C3%B3n%20breve%20de%20lo%20que%20necesito%3A%0A%0AGracias%2C" class="nav-cta">Book a Consultation</a>
   <button class="nav-mobile-toggle" aria-label="Toggle menu" onclick="document.getElementById('mobile-menu').classList.toggle('open')">
@@ -611,7 +605,7 @@
   <a href="#services" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;" onclick="document.getElementById('mobile-menu').classList.remove('open')">Services</a>
   <a href="#process" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;" onclick="document.getElementById('mobile-menu').classList.remove('open')">How It Works</a>
   <a href="#about" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;" onclick="document.getElementById('mobile-menu').classList.remove('open')">About</a>
-  <a href="#testimonials" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;" onclick="document.getElementById('mobile-menu').classList.remove('open')">Clients</a>
+  <a href="#case-study" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;" onclick="document.getElementById('mobile-menu').classList.remove('open')">Case Study</a>
   <a href="mailto:atreloefficiency@gmail.com?subject=Solicitud%20de%20Consulta%20-%20Atrelo%20Efficiency&body=Hola%20equipo%20de%20Atrelo%20Efficiency%2C%0A%0AMe%20interesa%20agendar%20una%20consulta%20para%20hablar%20sobre%20c%C3%B3mo%20pueden%20ayudar%20a%20mi%20negocio.%0A%0ANombre%3A%20%0AEmpresa%3A%20%0ATel%C3%A9fono%3A%20%0A%C3%81rea%20de%20inter%C3%A9s%3A%20(AI%20Automation%20%2F%20CRM%20%2F%20Web%20Development%20%2F%20Custom%20Systems)%0A%0ADescripci%C3%B3n%20breve%20de%20lo%20que%20necesito%3A%0A%0AGracias%2C" class="btn-primary">Book a Consultation</a>
 </div>
 
@@ -662,15 +656,15 @@
   <!-- Hero content -->
   <div class="hero-body">
     <div class="hero-copy">
-      <div class="hero-eyebrow">AI AUTOMATION · CUSTOM SOFTWARE · REAL RESULTS</div>
-      <h1 class="hero-h1">Engineering Business Efficiency <span class="accent">Through AI.</span></h1>
+      <div class="hero-eyebrow">CUSTOM SOFTWARE · AI AUTOMATION · REAL RESULTS</div>
+      <h1 class="hero-h1">Custom Software & <span class="accent">Engineered AI Automation</span> for Real Businesses.</h1>
       <p class="hero-sub">We help companies automate operations, build custom software, and implement AI solutions that drive measurable growth.</p>
       <div class="hero-btns">
         <a href="mailto:atreloefficiency@gmail.com?subject=Solicitud%20de%20Consulta%20-%20Atrelo%20Efficiency&body=Hola%20equipo%20de%20Atrelo%20Efficiency%2C%0A%0AMe%20interesa%20agendar%20una%20consulta%20para%20hablar%20sobre%20c%C3%B3mo%20pueden%20ayudar%20a%20mi%20negocio.%0A%0ANombre%3A%20%0AEmpresa%3A%20%0ATel%C3%A9fono%3A%20%0A%C3%81rea%20de%20inter%C3%A9s%3A%20(AI%20Automation%20%2F%20CRM%20%2F%20Web%20Development%20%2F%20Custom%20Systems)%0A%0ADescripci%C3%B3n%20breve%20de%20lo%20que%20necesito%3A%0A%0AGracias%2C" class="hero-btn-primary">Book a Consultation <span>→</span></a>
         <a href="#services" class="hero-btn-secondary">Explore Solutions <span style="color:#8fa0e8;">→</span></a>
       </div>
       <div class="hero-meta">
-        <span class="hero-stars">★★★★★</span>&nbsp;&nbsp;5.0 from 50+ reviews · Based in Puerto Rico
+        Based in Puerto Rico · Serving SMBs, corporations &amp; government clients
       </div>
     </div>
 
@@ -801,6 +795,12 @@
   </div>
 </section>
 
+<!-- ═══════════════════════════ EVENT BANNER ═══════════════════════════ -->
+<div id="event-banner" class="reveal">
+  <p>Catch us at the <span class="accent">Caribbean AI Summit</span> — October 9–10, PR Convention Center.</p>
+  <a href="#cta">Let's talk before then →</a>
+</div>
+
 <!-- ═══════════════════════════ SERVICES ═══════════════════════════ -->
 <section id="services">
   <div class="services-header reveal">
@@ -827,8 +827,8 @@
         </svg>
       </div>
       <h3>CRM Solutions</h3>
-      <p>Custom CRM systems adapted to your business model — track leads, manage clients, and automate follow-ups with precision.</p>
-      <span class="service-tag">Customer Management</span>
+      <p>Custom-built CRM to manage your sales pipeline and client relationships — track leads, log interactions, and automate follow-ups so nothing falls through the cracks.</p>
+      <span class="service-tag">Sales &amp; Client Relationships</span>
     </div>
     <div class="service-card reveal reveal-delay-3">
       <div class="service-icon">
@@ -848,8 +848,8 @@
         </svg>
       </div>
       <h3>Custom Systems</h3>
-      <p>Internal tools, dashboards, and bespoke software built precisely to your operational needs — no compromises, no workarounds.</p>
-      <span class="service-tag">Bespoke Software</span>
+      <p>Internal tools built around how your business actually operates — scheduling, inventory, job tracking, and dashboards, not a generic template.</p>
+      <span class="service-tag">Internal Operations</span>
     </div>
   </div>
 </section>
@@ -858,20 +858,20 @@
 <div id="stats">
   <div class="stats-grid">
     <div class="stat-item reveal">
-      <h3>50+</h3>
-      <p>Clients served</p>
+      <h3>Live</h3>
+      <p>In production today</p>
     </div>
     <div class="stat-item reveal reveal-delay-1">
-      <h3>5.0</h3>
-      <p>Average rating</p>
-    </div>
-    <div class="stat-item reveal reveal-delay-2">
-      <h3>3x</h3>
-      <p>Avg. efficiency gain</p>
-    </div>
-    <div class="stat-item reveal reveal-delay-3">
       <h3>PR</h3>
       <p>Based in Puerto Rico</p>
+    </div>
+    <div class="stat-item reveal reveal-delay-2">
+      <h3>Full-Stack</h3>
+      <p>AI + custom software</p>
+    </div>
+    <div class="stat-item reveal reveal-delay-3">
+      <h3>Caribbean</h3>
+      <p>SMB, corporate &amp; government</p>
     </div>
   </div>
 </div>
@@ -908,7 +908,7 @@
     <div class="about-copy">
       <div class="section-label reveal">About Us</div>
       <h2 class="section-title reveal">Built in Puerto Rico. <span class="accent">Built for the world.</span></h2>
-      <p class="section-sub reveal">Atrelo Efficiency was founded by Jesiel N. Jiménez Rodríguez with a clear mission: to bring enterprise-grade technology and AI to the businesses that need it most — SMBs, corporations, and government clients in Puerto Rico and beyond.</p>
+      <p class="section-sub reveal">Atrelo Efficiency is co-founded by Jesiel N. Jiménez Rodríguez, focused on software engineering and AI systems, alongside a co-founder with a background in business operations — bringing enterprise-grade technology to the businesses that need it most in Puerto Rico and beyond.</p>
       <div class="about-highlights">
         <div class="about-highlight reveal reveal-delay-1">
           <div class="about-highlight-icon">
@@ -917,8 +917,8 @@
             </svg>
           </div>
           <div>
-            <h4>Trusted by 50+ businesses</h4>
-            <p>A proven track record with clients ranging from small local businesses to larger corporate and government entities.</p>
+            <h4>Live in production</h4>
+            <p>Our first system is already running in production for a real client — proof this is working software, not just a pitch.</p>
           </div>
         </div>
         <div class="about-highlight reveal reveal-delay-2">
@@ -929,7 +929,7 @@
           </div>
           <div>
             <h4>Fast delivery, no fluff</h4>
-            <p>We skip the bloat and go straight to building. Most clients see working prototypes within the first two weeks.</p>
+            <p>We skip the bloat and go straight to building working software — not slide decks and vague roadmaps.</p>
           </div>
         </div>
         <div class="about-highlight reveal reveal-delay-3">
@@ -989,46 +989,41 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════ TESTIMONIALS ═══════════════════════════ -->
-<section id="testimonials">
-  <div class="testimonials-header reveal">
-    <div class="section-label">Client Stories</div>
-    <h2 class="section-title">Results that <span class="accent">speak for themselves</span></h2>
-    <p class="section-sub">From automating daily operations to building systems from scratch, here's what our clients have to say.</p>
+<!-- ═══════════════════════════ CASE STUDY ═══════════════════════════ -->
+<section id="case-study">
+  <div class="services-header reveal">
+    <div class="section-label">Case Study</div>
+    <h2 class="section-title">From paper to platform: <span class="accent">Euromecanico</span></h2>
+    <p class="section-sub">Our first production system — built for a Porsche specialist shop in Puerto Rico.</p>
   </div>
-  <div class="testimonials-grid">
-    <div class="testimonial-card reveal reveal-delay-1">
-      <div class="t-stars">★★★★★</div>
-      <p class="t-quote">They built us a fully automated lead management system in three weeks. What used to take hours per day now runs on autopilot. The ROI was immediate.</p>
-      <div class="t-author">
-        <div class="t-avatar">MR</div>
-        <div>
-          <div class="t-name">Miguel R.</div>
-          <div class="t-role">CEO, Real Estate Firm · Puerto Rico</div>
-        </div>
+  <div class="services-grid">
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7b8fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
+          <line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/>
+        </svg>
       </div>
+      <h3>The Challenge</h3>
+      <p>Client records, repair history, and scheduling ran through manual, paper-based processes — making it hard to track jobs and follow up with clients as the shop grew.</p>
     </div>
-    <div class="testimonial-card reveal reveal-delay-2">
-      <div class="t-stars">★★★★★</div>
-      <p class="t-quote">Atrelo transformed our client onboarding. What was a 2-day manual process is now fully automated and takes under 20 minutes. Incredible work.</p>
-      <div class="t-author">
-        <div class="t-avatar">LC</div>
-        <div>
-          <div class="t-name">Laura C.</div>
-          <div class="t-role">Operations Director · Healthcare Group</div>
-        </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7b8fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
       </div>
+      <h3>The Solution</h3>
+      <p>We designed and built a custom shop management system: centralized client records, repair tracking, and day-to-day operations, secured with PIN-based access for the team.</p>
     </div>
-    <div class="testimonial-card reveal reveal-delay-3">
-      <div class="t-stars">★★★★★</div>
-      <p class="t-quote">The custom dashboard they built gave us visibility we never had before. We can now make decisions in real time instead of waiting on weekly reports.</p>
-      <div class="t-author">
-        <div class="t-avatar">AT</div>
-        <div>
-          <div class="t-name">Andrés T.</div>
-          <div class="t-role">COO · Logistics Company · PR</div>
-        </div>
+    <div class="service-card reveal reveal-delay-3">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7b8fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
       </div>
+      <h3>The Result</h3>
+      <p>Euromecanico now runs daily operations from one system instead of scattered paper and spreadsheets — reducing manual work and centralizing client and repair management.</p>
     </div>
   </div>
 </section>
@@ -1071,7 +1066,7 @@
         </svg>
         <span style="font-weight:700;font-size:1rem;color:var(--text-main);margin-left:10px;align-self:center;">Atrelo Efficiency</span>
       </a>
-      <p>AI automation and custom software for businesses that want to operate at a higher level. Based in Puerto Rico.</p>
+      <p>Custom software and AI automation for businesses that want to operate at a higher level. Based in Puerto Rico.</p>
     </div>
     <div class="footer-col">
       <h4>Services</h4>
@@ -1087,7 +1082,7 @@
       <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#process">How It Works</a></li>
-        <li><a href="#testimonials">Client Stories</a></li>
+        <li><a href="#case-study">Case Study</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -1100,7 +1095,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2026 Atrelo Efficiency · Founded by Jesiel N. Jiménez Rodríguez · Puerto Rico</p>
+    <p>© 2026 Atrelo Efficiency · Puerto Rico</p>
     <div class="footer-socials">
       <a href="#" class="footer-social" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
