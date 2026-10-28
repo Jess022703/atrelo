@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Atrelo Efficiency — custom software, AI automation, and CRM solutions for SMBs, corporations, and government agencies across Puerto Rico and the Caribbean.">
+  <meta name="description" content="Atrelo Efficiency is a software development company in Puerto Rico. We build custom software, web applications, CRM systems, and AI automations.">
   <link rel="canonical" href="https://atreloefficiency.com/">
   <link rel="icon" href="https://atreloefficiency.com/favicon.ico" sizes="any">
   <link rel="shortcut icon" href="https://atreloefficiency.com/favicon.ico">
@@ -12,8 +12,8 @@
   <link rel="apple-touch-icon" sizes="180x180" href="https://atreloefficiency.com/favicon-180x180.png">
   <link rel="manifest" href="https://atreloefficiency.com/site.webmanifest">
   <meta name="theme-color" content="#050410">
-  <meta property="og:title" content="Atrelo Efficiency">
-  <meta property="og:description" content="Custom software and engineered AI automation for real businesses in Puerto Rico and the Caribbean.">
+  <meta property="og:title" content="Atrelo Efficiency | Software Development &amp; AI Automation">
+  <meta property="og:description" content="A Puerto Rico-based software development company building custom applications, business systems, and AI automations.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://atreloefficiency.com/">
   <meta property="og:image" content="https://atreloefficiency.com/logo.png">
@@ -21,19 +21,20 @@
   <meta property="og:image:width" content="1024">
   <meta property="og:image:height" content="1024">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Atrelo Efficiency">
-  <meta name="twitter:description" content="Custom software and engineered AI automation for real businesses in Puerto Rico and the Caribbean.">
+  <meta name="twitter:title" content="Atrelo Efficiency | Software Development &amp; AI Automation">
+  <meta name="twitter:description" content="A Puerto Rico-based software development company building custom applications, business systems, and AI automations.">
   <meta name="twitter:image" content="https://atreloefficiency.com/logo.png">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Atrelo Efficiency",
+    "description": "A software development and AI automation company based in Puerto Rico.",
     "url": "https://atreloefficiency.com/",
     "logo": "https://atreloefficiency.com/logo.png"
   }
   </script>
-  <title>Atrelo Efficiency</title>
+  <title>Atrelo Efficiency | Software Development &amp; AI Automation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -57,7 +58,9 @@
       --card-bg:    rgba(255,255,255,.035);
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+    a:focus-visible, button:focus-visible { outline:2px solid #aab7ff; outline-offset:5px; }
+    body.menu-open { overflow:hidden; }
     body {
       font-family: 'Poppins', sans-serif;
       background: var(--bg-deep);
@@ -122,12 +125,13 @@
       text-decoration:none; white-space:nowrap;
     }
     .nav-cta:hover { opacity:.88; transform:translateY(-1px); }
-    .nav-mobile-toggle { display:none; background:none; border:none; cursor:pointer; }
+    .nav-mobile-toggle { display:none; background:none; border:none; cursor:pointer; padding:10px; }
     .nav-mobile-toggle span { display:block; width:24px; height:2px; background:var(--text-main); margin:5px 0; transition:.3s; }
 
     /* ─── HERO ─── */
     #hero {
-      position:relative; width:100%; aspect-ratio:16/9; overflow:hidden;
+      position:relative; width:100%; min-height:56.25vw; overflow:hidden;
+      display:flex;
       container-type:inline-size;
       background: radial-gradient(135% 120% at 74% 40%, #1c1444 0%, #100c2c 34%, #08071a 64%, #050410 100%);
     }
@@ -147,25 +151,9 @@
       filter:blur(8px); animation:hazePulse 5.8s ease-in-out infinite; pointer-events:none; z-index:2;
     }
 
-    .hero-nav-bar {
-      position:absolute; top:0; left:0; right:0;
-      display:flex; align-items:center; justify-content:space-between;
-      padding:2.4cqw 4cqw; z-index:6;
-      animation:fadeIn 1s ease 2.5s both;
-    }
-    .hero-nav-logo { display:flex; align-items:center; gap:.9cqw; }
-    .hero-nav-logo svg { width:3.6cqw; height:auto; }
-    .hero-nav-logo span { font-weight:700; font-size:1.55cqw; letter-spacing:-.2px; }
-    .hero-nav-links { display:flex; align-items:center; gap:2.4cqw; font-size:1.05cqw; color:#aeb4d6; }
-    .hero-nav-btn {
-      padding:.95cqw 1.7cqw; border-radius:999px; font-size:1.05cqw; font-weight:600;
-      color:#fff; background:linear-gradient(95deg,#3b6ef5,#7b3ff0);
-      box-shadow:0 6px 22px rgba(95,70,235,.45); white-space:nowrap;
-    }
-
     .hero-body {
-      position:absolute; inset:0; display:flex; align-items:center;
-      padding:0 4cqw; z-index:5;
+      position:relative; display:flex; align-items:center; flex:1;
+      padding:100px 4cqw 60px; z-index:5;
     }
     .hero-copy { width:47%; flex:none; padding-top:2cqw; }
     .hero-eyebrow {
@@ -439,6 +427,8 @@
 
     /* ─── RESPONSIVE ─── */
     @media(max-width:1100px) {
+      .nav-links, .nav-cta { display:none; }
+      .nav-mobile-toggle { display:block; }
       .about-grid { grid-template-columns:1fr; gap:3rem; }
       .about-visual { max-width:480px; }
     }
@@ -461,11 +451,9 @@
         flex-direction:column;
       }
 
-      /* Hide the duplicate inner nav — the fixed nav covers this */
-      .hero-nav-bar { display:none; }
-
       /* Stack copy vertically, centered, real padding */
       .hero-body {
+        position:relative;
         flex-direction:column;
         align-items:flex-start;
         justify-content:center;
@@ -600,24 +588,27 @@
     <li><a href="#about">About</a></li>
     <li><a href="#case-study">Case Study</a></li>
   </ul>
-  <a href="mailto:atreloefficiency@gmail.com?subject=Solicitud%20de%20Consulta%20-%20Atrelo%20Efficiency&body=Hola%20equipo%20de%20Atrelo%20Efficiency%2C%0A%0AMe%20interesa%20agendar%20una%20consulta%20para%20hablar%20sobre%20c%C3%B3mo%20pueden%20ayudar%20a%20mi%20negocio.%0A%0ANombre%3A%20%0AEmpresa%3A%20%0ATel%C3%A9fono%3A%20%0A%C3%81rea%20de%20inter%C3%A9s%3A%20(AI%20Automation%20%2F%20CRM%20%2F%20Web%20Development%20%2F%20Custom%20Systems)%0A%0ADescripci%C3%B3n%20breve%20de%20lo%20que%20necesito%3A%0A%0AGracias%2C" class="nav-cta">Book a Consultation</a>
-  <button class="nav-mobile-toggle" aria-label="Toggle menu" onclick="document.getElementById('mobile-menu').classList.toggle('open')">
+  <a href="mailto:atreloefficiency@gmail.com?subject=Solicitud%20de%20Consulta%20-%20Atrelo%20Efficiency&body=Hola%20Atrelo%20Efficiency%2C%0A%0AMe%20interesa%20agendar%20una%20consulta%20para%20hablar%20sobre%20c%C3%B3mo%20pueden%20ayudar%20a%20mi%20negocio.%0A%0ANombre%3A%20%0AEmpresa%3A%20%0ATel%C3%A9fono%3A%20%0A%C3%81rea%20de%20inter%C3%A9s%3A%20(Custom%20Software%20Development%20%2F%20AI%20Automation%20%2F%20CRM%20%2F%20Web%20Development)%0A%0ADescripci%C3%B3n%20breve%20de%20lo%20que%20necesito%3A%0A%0AGracias%2C" class="nav-cta">Book a Consultation</a>
+  <button class="nav-mobile-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- Mobile menu -->
 <div id="mobile-menu" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; z-index:99; background:rgba(5,4,16,.97); backdrop-filter:blur(20px); flex-direction:column; align-items:center; justify-content:center; gap:2rem;" class="mobile-menu-inner">
-  <button onclick="document.getElementById('mobile-menu').classList.remove('open')" style="position:absolute;top:20px;right:5%;background:none;border:none;color:white;font-size:1.5rem;cursor:pointer;">✕</button>
-  <a href="#services" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;" onclick="document.getElementById('mobile-menu').classList.remove('open')">Services</a>
-  <a href="#process" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;" onclick="document.getElementById('mobile-menu').classList.remove('open')">How It Works</a>
-  <a href="#about" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;" onclick="document.getElementById('mobile-menu').classList.remove('open')">About</a>
-  <a href="#case-study" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;" onclick="document.getElementById('mobile-menu').classList.remove('open')">Case Study</a>
-  <a href="mailto:atreloefficiency@gmail.com?subject=Solicitud%20de%20Consulta%20-%20Atrelo%20Efficiency&body=Hola%20equipo%20de%20Atrelo%20Efficiency%2C%0A%0AMe%20interesa%20agendar%20una%20consulta%20para%20hablar%20sobre%20c%C3%B3mo%20pueden%20ayudar%20a%20mi%20negocio.%0A%0ANombre%3A%20%0AEmpresa%3A%20%0ATel%C3%A9fono%3A%20%0A%C3%81rea%20de%20inter%C3%A9s%3A%20(AI%20Automation%20%2F%20CRM%20%2F%20Web%20Development%20%2F%20Custom%20Systems)%0A%0ADescripci%C3%B3n%20breve%20de%20lo%20que%20necesito%3A%0A%0AGracias%2C" class="btn-primary">Book a Consultation</a>
+  <a href="#services" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;">Services</a>
+  <a href="#process" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;">How It Works</a>
+  <a href="#about" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;">About</a>
+  <a href="#case-study" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;">Case Study</a>
+  <a href="mailto:atreloefficiency@gmail.com?subject=Solicitud%20de%20Consulta%20-%20Atrelo%20Efficiency&body=Hola%20Atrelo%20Efficiency%2C%0A%0AMe%20interesa%20agendar%20una%20consulta%20para%20hablar%20sobre%20c%C3%B3mo%20pueden%20ayudar%20a%20mi%20negocio.%0A%0ANombre%3A%20%0AEmpresa%3A%20%0ATel%C3%A9fono%3A%20%0A%C3%81rea%20de%20inter%C3%A9s%3A%20(Custom%20Software%20Development%20%2F%20AI%20Automation%20%2F%20CRM%20%2F%20Web%20Development)%0A%0ADescripci%C3%B3n%20breve%20de%20lo%20que%20necesito%3A%0A%0AGracias%2C" class="btn-primary">Book a Consultation</a>
 </div>
 
 <style>
-  #mobile-menu.open { display:flex !important; }
+  #mobile-menu.open { display:flex !important; padding:100px 6% 32px; overflow-y:auto; }
+  #mobile-menu .btn-primary { width:auto; max-width:100%; }
+  @media(max-height:600px) {
+    #mobile-menu.open { justify-content:flex-start !important; gap:1rem !important; }
+  }
 </style>
 
 <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
@@ -636,38 +627,14 @@
   <!-- Purple haze -->
   <div class="hero-haze"></div>
 
-  <!-- Nav inside hero -->
-  <div class="hero-nav-bar">
-    <div class="hero-nav-logo">
-      <svg viewBox="0 0 64 40" overflow="visible" fill="none">
-        <defs>
-          <linearGradient id="hng" x1="6" y1="6" x2="58" y2="34" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stop-color="#4f7cff"/><stop offset="1" stop-color="#c44ce0"/>
-          </linearGradient>
-          <clipPath id="hnw"><rect x="30" y="22" width="14" height="16"/></clipPath>
-        </defs>
-        <circle id="hnL" cx="24" cy="20" r="13" stroke="url(#hng)" stroke-width="6"/>
-        <circle cx="42" cy="20" r="13" stroke="url(#hng)" stroke-width="6"/>
-        <use href="#hnL" clip-path="url(#hnw)"/>
-      </svg>
-      <span>Atrelo Efficiency</span>
-    </div>
-    <div class="hero-nav-links">
-      <a href="#services" style="text-decoration:none;color:#aeb4d6;">Services</a>
-      <a href="#process" style="text-decoration:none;color:#aeb4d6;">How It Works</a>
-      <a href="#about" style="text-decoration:none;color:#aeb4d6;">About</a>
-    </div>
-    <div class="hero-nav-btn">Book a Consultation</div>
-  </div>
-
   <!-- Hero content -->
   <div class="hero-body">
     <div class="hero-copy">
-      <div class="hero-eyebrow">CUSTOM SOFTWARE · AI AUTOMATION · REAL RESULTS</div>
-      <h1 class="hero-h1">Custom Software & <span class="accent">Engineered AI Automation</span> for Real Businesses.</h1>
-      <p class="hero-sub">We help companies automate operations, build custom software, and implement AI solutions that drive measurable growth.</p>
+      <div class="hero-eyebrow">SOFTWARE DEVELOPMENT · AI AUTOMATION · PUERTO RICO</div>
+      <h1 class="hero-h1">Software Development & <span class="accent">AI Automation</span> for Your Business.</h1>
+      <p class="hero-sub">Atrelo Efficiency is a software development company based in Puerto Rico. We build custom applications, business systems, and AI automations that simplify your operations.</p>
       <div class="hero-btns">
-        <a href="mailto:atreloefficiency@gmail.com?subject=Solicitud%20de%20Consulta%20-%20Atrelo%20Efficiency&body=Hola%20equipo%20de%20Atrelo%20Efficiency%2C%0A%0AMe%20interesa%20agendar%20una%20consulta%20para%20hablar%20sobre%20c%C3%B3mo%20pueden%20ayudar%20a%20mi%20negocio.%0A%0ANombre%3A%20%0AEmpresa%3A%20%0ATel%C3%A9fono%3A%20%0A%C3%81rea%20de%20inter%C3%A9s%3A%20(AI%20Automation%20%2F%20CRM%20%2F%20Web%20Development%20%2F%20Custom%20Systems)%0A%0ADescripci%C3%B3n%20breve%20de%20lo%20que%20necesito%3A%0A%0AGracias%2C" class="hero-btn-primary">Book a Consultation <span>→</span></a>
+        <a href="mailto:atreloefficiency@gmail.com?subject=Solicitud%20de%20Consulta%20-%20Atrelo%20Efficiency&body=Hola%20Atrelo%20Efficiency%2C%0A%0AMe%20interesa%20agendar%20una%20consulta%20para%20hablar%20sobre%20c%C3%B3mo%20pueden%20ayudar%20a%20mi%20negocio.%0A%0ANombre%3A%20%0AEmpresa%3A%20%0ATel%C3%A9fono%3A%20%0A%C3%81rea%20de%20inter%C3%A9s%3A%20(Custom%20Software%20Development%20%2F%20AI%20Automation%20%2F%20CRM%20%2F%20Web%20Development)%0A%0ADescripci%C3%B3n%20breve%20de%20lo%20que%20necesito%3A%0A%0AGracias%2C" class="hero-btn-primary">Book a Consultation <span>→</span></a>
         <a href="#services" class="hero-btn-secondary">Explore Solutions <span style="color:#8fa0e8;">→</span></a>
       </div>
       <div class="hero-meta">
@@ -807,10 +774,21 @@
   <div class="services-header reveal">
     <div class="section-label">What We Do</div>
     <h2 class="section-title">Solutions built for <span class="accent">real impact</span></h2>
-    <p class="section-sub">We combine intelligent automation with custom software development to help businesses operate at a higher level.</p>
+    <p class="section-sub">Custom software, web applications, CRM systems, and AI automation built around the way your business works.</p>
   </div>
   <div class="services-grid">
     <div class="service-card reveal reveal-delay-1">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7b8fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="9" height="9" rx="1"/><rect x="13" y="2" width="9" height="9" rx="1"/>
+          <rect x="2" y="13" width="9" height="9" rx="1"/><rect x="13" y="13" width="9" height="9" rx="1"/>
+        </svg>
+      </div>
+      <h3>Custom Software Development</h3>
+      <p>We develop custom business software and internal tools for scheduling, inventory, job tracking, and dashboards — designed around your processes and connected to the systems you use.</p>
+      <span class="service-tag">Business Software &amp; Internal Tools</span>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
       <div class="service-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="#7b8fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
@@ -820,7 +798,7 @@
       <p>We design and deploy intelligent workflows that eliminate manual tasks, reduce errors, and let your team focus on what matters most.</p>
       <span class="service-tag">Workflow Automation</span>
     </div>
-    <div class="service-card reveal reveal-delay-2">
+    <div class="service-card reveal reveal-delay-3">
       <div class="service-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="#7b8fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/>
@@ -831,7 +809,7 @@
       <p>Custom-built CRM to manage your sales pipeline and client relationships — track leads, log interactions, and automate follow-ups so nothing falls through the cracks.</p>
       <span class="service-tag">Sales &amp; Client Relationships</span>
     </div>
-    <div class="service-card reveal reveal-delay-3">
+    <div class="service-card reveal reveal-delay-4">
       <div class="service-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="#7b8fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
@@ -840,17 +818,6 @@
       <h3>Web Development</h3>
       <p>Modern, high-performance web applications and marketing sites designed to convert visitors into customers and grow your brand online.</p>
       <span class="service-tag">Full-Stack Development</span>
-    </div>
-    <div class="service-card reveal reveal-delay-4">
-      <div class="service-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#7b8fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="2" width="9" height="9" rx="1"/><rect x="13" y="2" width="9" height="9" rx="1"/>
-          <rect x="2" y="13" width="9" height="9" rx="1"/><rect x="13" y="13" width="9" height="9" rx="1"/>
-        </svg>
-      </div>
-      <h3>Custom Systems</h3>
-      <p>Internal tools built around how your business actually operates — scheduling, inventory, job tracking, and dashboards, not a generic template.</p>
-      <span class="service-tag">Internal Operations</span>
     </div>
   </div>
 </section>
@@ -907,9 +874,9 @@
 <section id="about">
   <div class="about-grid">
     <div class="about-copy">
-      <div class="section-label reveal">About Us</div>
+      <div class="section-label reveal">About Atrelo</div>
       <h2 class="section-title reveal">Built in Puerto Rico. <span class="accent">Built for the world.</span></h2>
-      <p class="section-sub reveal">Atrelo Efficiency is co-founded by Jesiel N. Jiménez Rodríguez, focused on software engineering and AI systems, alongside a co-founder with a background in business operations — bringing enterprise-grade technology to the businesses that need it most in Puerto Rico and beyond.</p>
+      <p class="section-sub reveal">Atrelo Efficiency is a software development and AI automation company based in Puerto Rico, led by Jesiel N. Jiménez Rodríguez. We build custom applications, business systems, and integrations that simplify day-to-day operations. Clients work directly with Jesiel from planning through development and launch.</p>
       <div class="about-highlights">
         <div class="about-highlight reveal reveal-delay-1">
           <div class="about-highlight-icon">
@@ -1040,10 +1007,10 @@
         Free 30-Minute Discovery Call
       </div>
       <h2 class="cta-title reveal">Ready to <span class="accent">transform</span> how your business runs?</h2>
-      <p class="cta-sub reveal">Let's find the exact combination of AI and automation that will have the biggest impact on your operations. No commitment, no pressure — just clarity.</p>
+      <p class="cta-sub reveal">Let's talk about the software, systems, and automations your business needs. Get a clear starting point for your project with a free 30-minute consultation.</p>
       <div class="cta-btns reveal">
-        <a href="mailto:atreloefficiency@gmail.com?subject=Solicitud%20de%20Consulta%20-%20Atrelo%20Efficiency&body=Hola%20equipo%20de%20Atrelo%20Efficiency%2C%0A%0AMe%20interesa%20agendar%20una%20consulta%20para%20hablar%20sobre%20c%C3%B3mo%20pueden%20ayudar%20a%20mi%20negocio.%0A%0ANombre%3A%20%0AEmpresa%3A%20%0ATel%C3%A9fono%3A%20%0A%C3%81rea%20de%20inter%C3%A9s%3A%20(AI%20Automation%20%2F%20CRM%20%2F%20Web%20Development%20%2F%20Custom%20Systems)%0A%0ADescripci%C3%B3n%20breve%20de%20lo%20que%20necesito%3A%0A%0AGracias%2C" class="btn-primary">Book a Free Consultation →</a>
-        <a href="mailto:atreloefficiency@gmail.com?subject=Solicitud%20de%20Consulta%20-%20Atrelo%20Efficiency&body=Hola%20equipo%20de%20Atrelo%20Efficiency%2C%0A%0AMe%20interesa%20agendar%20una%20consulta%20para%20hablar%20sobre%20c%C3%B3mo%20pueden%20ayudar%20a%20mi%20negocio.%0A%0ANombre%3A%20%0AEmpresa%3A%20%0ATel%C3%A9fono%3A%20%0A%C3%81rea%20de%20inter%C3%A9s%3A%20(AI%20Automation%20%2F%20CRM%20%2F%20Web%20Development%20%2F%20Custom%20Systems)%0A%0ADescripci%C3%B3n%20breve%20de%20lo%20que%20necesito%3A%0A%0AGracias%2C" class="btn-secondary">Send Us a Message</a>
+        <a href="mailto:atreloefficiency@gmail.com?subject=Solicitud%20de%20Consulta%20-%20Atrelo%20Efficiency&body=Hola%20Atrelo%20Efficiency%2C%0A%0AMe%20interesa%20agendar%20una%20consulta%20para%20hablar%20sobre%20c%C3%B3mo%20pueden%20ayudar%20a%20mi%20negocio.%0A%0ANombre%3A%20%0AEmpresa%3A%20%0ATel%C3%A9fono%3A%20%0A%C3%81rea%20de%20inter%C3%A9s%3A%20(Custom%20Software%20Development%20%2F%20AI%20Automation%20%2F%20CRM%20%2F%20Web%20Development)%0A%0ADescripci%C3%B3n%20breve%20de%20lo%20que%20necesito%3A%0A%0AGracias%2C" class="btn-primary">Book a Free Consultation →</a>
+        <a href="mailto:atreloefficiency@gmail.com?subject=Solicitud%20de%20Consulta%20-%20Atrelo%20Efficiency&body=Hola%20Atrelo%20Efficiency%2C%0A%0AMe%20interesa%20agendar%20una%20consulta%20para%20hablar%20sobre%20c%C3%B3mo%20pueden%20ayudar%20a%20mi%20negocio.%0A%0ANombre%3A%20%0AEmpresa%3A%20%0ATel%C3%A9fono%3A%20%0A%C3%81rea%20de%20inter%C3%A9s%3A%20(Custom%20Software%20Development%20%2F%20AI%20Automation%20%2F%20CRM%20%2F%20Web%20Development)%0A%0ADescripci%C3%B3n%20breve%20de%20lo%20que%20necesito%3A%0A%0AGracias%2C" class="btn-secondary">Send Us a Message</a>
       </div>
     </div>
   </div>
@@ -1067,15 +1034,15 @@
         </svg>
         <span style="font-weight:700;font-size:1rem;color:var(--text-main);margin-left:10px;align-self:center;">Atrelo Efficiency</span>
       </a>
-      <p>Custom software and AI automation for businesses that want to operate at a higher level. Based in Puerto Rico.</p>
+      <p>A Puerto Rico-based software development company building custom software, business systems, and AI automations.</p>
     </div>
     <div class="footer-col">
       <h4>Services</h4>
       <ul>
+        <li><a href="#services">Custom Software Development</a></li>
         <li><a href="#services">AI Automation</a></li>
         <li><a href="#services">CRM Solutions</a></li>
         <li><a href="#services">Web Development</a></li>
-        <li><a href="#services">Custom Systems</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -1195,10 +1162,42 @@
     }
   });
 
+  /* ── Mobile navigation ── */
+  const menuToggle = document.querySelector('.nav-mobile-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  function setMenuOpen(open, restoreFocus = false) {
+    mobileMenu.classList.toggle('open', open);
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.classList.toggle('menu-open', open);
+    if (restoreFocus) menuToggle.focus();
+  }
+  menuToggle.addEventListener('click', () => {
+    setMenuOpen(menuToggle.getAttribute('aria-expanded') !== 'true');
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => setMenuOpen(false, true));
+  });
+  document.addEventListener('keydown', event => {
+    if (!mobileMenu.classList.contains('open')) return;
+    if (event.key === 'Escape') setMenuOpen(false, true);
+    if (event.key === 'Tab') {
+      const items = [menuToggle, ...mobileMenu.querySelectorAll('a')];
+      const index = items.indexOf(document.activeElement);
+      const next = event.shiftKey ? (index <= 0 ? items.length - 1 : index - 1) : (index + 1) % items.length;
+      event.preventDefault();
+      items[next].focus();
+    }
+  });
+  window.matchMedia('(min-width:1101px)').addEventListener('change', event => {
+    if (event.matches) setMenuOpen(false);
+  });
+
   /* ── Smooth anchor scroll ── */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
+      const id = a.getAttribute('href').slice(1);
+      const target = id ? document.getElementById(id) : document.getElementById('hero');
       if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
   });

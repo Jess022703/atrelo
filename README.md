@@ -1,13 +1,13 @@
 # Atrelo Efficiency
 
-Empresa de tecnología e inteligencia artificial con base en Puerto Rico, fundada por Jesiel N. Jiménez Rodríguez. Se especializa en ayudar a negocios a optimizar sus operaciones mediante soluciones tecnológicas personalizadas.
+Empresa de desarrollo de software y automatización con inteligencia artificial con base en Puerto Rico, liderada por Jesiel N. Jiménez Rodríguez. Desarrollamos aplicaciones, sistemas de negocio e integraciones a medida. Los clientes trabajan directamente con Jesiel desde la planificación hasta el desarrollo y lanzamiento.
 
 ## Servicios
 
+- **Custom Software Development** — software empresarial, herramientas internas y paneles adaptados a cada negocio
 - **AI Automation** — flujos de trabajo automatizados con inteligencia artificial
 - **CRM Solutions** — sistemas de gestión de clientes adaptados al negocio
 - **Web Development** — desarrollo web moderno y funcional
-- **Custom Systems** — sistemas internos a medida según las necesidades del cliente
 
 ## Mercado Objetivo
 
