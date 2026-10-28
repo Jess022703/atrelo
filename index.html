@@ -58,7 +58,9 @@
       --card-bg:    rgba(255,255,255,.035);
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+    a:focus-visible, button:focus-visible { outline:2px solid #aab7ff; outline-offset:5px; }
+    body.menu-open { overflow:hidden; }
     body {
       font-family: 'Poppins', sans-serif;
       background: var(--bg-deep);
@@ -123,12 +125,13 @@
       text-decoration:none; white-space:nowrap;
     }
     .nav-cta:hover { opacity:.88; transform:translateY(-1px); }
-    .nav-mobile-toggle { display:none; background:none; border:none; cursor:pointer; }
+    .nav-mobile-toggle { display:none; background:none; border:none; cursor:pointer; padding:10px; }
     .nav-mobile-toggle span { display:block; width:24px; height:2px; background:var(--text-main); margin:5px 0; transition:.3s; }
 
     /* ─── HERO ─── */
     #hero {
-      position:relative; width:100%; aspect-ratio:16/9; overflow:hidden;
+      position:relative; width:100%; min-height:56.25vw; overflow:hidden;
+      display:flex;
       container-type:inline-size;
       background: radial-gradient(135% 120% at 74% 40%, #1c1444 0%, #100c2c 34%, #08071a 64%, #050410 100%);
     }
@@ -148,25 +151,9 @@
       filter:blur(8px); animation:hazePulse 5.8s ease-in-out infinite; pointer-events:none; z-index:2;
     }
 
-    .hero-nav-bar {
-      position:absolute; top:0; left:0; right:0;
-      display:flex; align-items:center; justify-content:space-between;
-      padding:2.4cqw 4cqw; z-index:6;
-      animation:fadeIn 1s ease 2.5s both;
-    }
-    .hero-nav-logo { display:flex; align-items:center; gap:.9cqw; }
-    .hero-nav-logo svg { width:3.6cqw; height:auto; }
-    .hero-nav-logo span { font-weight:700; font-size:1.55cqw; letter-spacing:-.2px; }
-    .hero-nav-links { display:flex; align-items:center; gap:2.4cqw; font-size:1.05cqw; color:#aeb4d6; }
-    .hero-nav-btn {
-      padding:.95cqw 1.7cqw; border-radius:999px; font-size:1.05cqw; font-weight:600;
-      color:#fff; background:linear-gradient(95deg,#3b6ef5,#7b3ff0);
-      box-shadow:0 6px 22px rgba(95,70,235,.45); white-space:nowrap;
-    }
-
     .hero-body {
-      position:absolute; inset:0; display:flex; align-items:center;
-      padding:0 4cqw; z-index:5;
+      position:relative; display:flex; align-items:center; flex:1;
+      padding:100px 4cqw 60px; z-index:5;
     }
     .hero-copy { width:47%; flex:none; padding-top:2cqw; }
     .hero-eyebrow {
@@ -440,6 +427,8 @@
 
     /* ─── RESPONSIVE ─── */
     @media(max-width:1100px) {
+      .nav-links, .nav-cta { display:none; }
+      .nav-mobile-toggle { display:block; }
       .about-grid { grid-template-columns:1fr; gap:3rem; }
       .about-visual { max-width:480px; }
     }
@@ -462,11 +451,9 @@
         flex-direction:column;
       }
 
-      /* Hide the duplicate inner nav — the fixed nav covers this */
-      .hero-nav-bar { display:none; }
-
       /* Stack copy vertically, centered, real padding */
       .hero-body {
+        position:relative;
         flex-direction:column;
         align-items:flex-start;
         justify-content:center;
@@ -602,23 +589,26 @@
     <li><a href="#case-study">Case Study</a></li>
   </ul>
   <a href="mailto:atreloefficiency@gmail.com?subject=Solicitud%20de%20Consulta%20-%20Atrelo%20Efficiency&body=Hola%20Atrelo%20Efficiency%2C%0A%0AMe%20interesa%20agendar%20una%20consulta%20para%20hablar%20sobre%20c%C3%B3mo%20pueden%20ayudar%20a%20mi%20negocio.%0A%0ANombre%3A%20%0AEmpresa%3A%20%0ATel%C3%A9fono%3A%20%0A%C3%81rea%20de%20inter%C3%A9s%3A%20(Custom%20Software%20Development%20%2F%20AI%20Automation%20%2F%20CRM%20%2F%20Web%20Development)%0A%0ADescripci%C3%B3n%20breve%20de%20lo%20que%20necesito%3A%0A%0AGracias%2C" class="nav-cta">Book a Consultation</a>
-  <button class="nav-mobile-toggle" aria-label="Toggle menu" onclick="document.getElementById('mobile-menu').classList.toggle('open')">
+  <button class="nav-mobile-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- Mobile menu -->
 <div id="mobile-menu" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; z-index:99; background:rgba(5,4,16,.97); backdrop-filter:blur(20px); flex-direction:column; align-items:center; justify-content:center; gap:2rem;" class="mobile-menu-inner">
-  <button onclick="document.getElementById('mobile-menu').classList.remove('open')" style="position:absolute;top:20px;right:5%;background:none;border:none;color:white;font-size:1.5rem;cursor:pointer;">✕</button>
-  <a href="#services" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;" onclick="document.getElementById('mobile-menu').classList.remove('open')">Services</a>
-  <a href="#process" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;" onclick="document.getElementById('mobile-menu').classList.remove('open')">How It Works</a>
-  <a href="#about" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;" onclick="document.getElementById('mobile-menu').classList.remove('open')">About</a>
-  <a href="#case-study" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;" onclick="document.getElementById('mobile-menu').classList.remove('open')">Case Study</a>
+  <a href="#services" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;">Services</a>
+  <a href="#process" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;">How It Works</a>
+  <a href="#about" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;">About</a>
+  <a href="#case-study" style="color:var(--text-main);text-decoration:none;font-size:1.5rem;font-weight:600;">Case Study</a>
   <a href="mailto:atreloefficiency@gmail.com?subject=Solicitud%20de%20Consulta%20-%20Atrelo%20Efficiency&body=Hola%20Atrelo%20Efficiency%2C%0A%0AMe%20interesa%20agendar%20una%20consulta%20para%20hablar%20sobre%20c%C3%B3mo%20pueden%20ayudar%20a%20mi%20negocio.%0A%0ANombre%3A%20%0AEmpresa%3A%20%0ATel%C3%A9fono%3A%20%0A%C3%81rea%20de%20inter%C3%A9s%3A%20(Custom%20Software%20Development%20%2F%20AI%20Automation%20%2F%20CRM%20%2F%20Web%20Development)%0A%0ADescripci%C3%B3n%20breve%20de%20lo%20que%20necesito%3A%0A%0AGracias%2C" class="btn-primary">Book a Consultation</a>
 </div>
 
 <style>
-  #mobile-menu.open { display:flex !important; }
+  #mobile-menu.open { display:flex !important; padding:100px 6% 32px; overflow-y:auto; }
+  #mobile-menu .btn-primary { width:auto; max-width:100%; }
+  @media(max-height:600px) {
+    #mobile-menu.open { justify-content:flex-start !important; gap:1rem !important; }
+  }
 </style>
 
 <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
@@ -636,30 +626,6 @@
 
   <!-- Purple haze -->
   <div class="hero-haze"></div>
-
-  <!-- Nav inside hero -->
-  <div class="hero-nav-bar">
-    <div class="hero-nav-logo">
-      <svg viewBox="0 0 64 40" overflow="visible" fill="none">
-        <defs>
-          <linearGradient id="hng" x1="6" y1="6" x2="58" y2="34" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stop-color="#4f7cff"/><stop offset="1" stop-color="#c44ce0"/>
-          </linearGradient>
-          <clipPath id="hnw"><rect x="30" y="22" width="14" height="16"/></clipPath>
-        </defs>
-        <circle id="hnL" cx="24" cy="20" r="13" stroke="url(#hng)" stroke-width="6"/>
-        <circle cx="42" cy="20" r="13" stroke="url(#hng)" stroke-width="6"/>
-        <use href="#hnL" clip-path="url(#hnw)"/>
-      </svg>
-      <span>Atrelo Efficiency</span>
-    </div>
-    <div class="hero-nav-links">
-      <a href="#services" style="text-decoration:none;color:#aeb4d6;">Services</a>
-      <a href="#process" style="text-decoration:none;color:#aeb4d6;">How It Works</a>
-      <a href="#about" style="text-decoration:none;color:#aeb4d6;">About</a>
-    </div>
-    <div class="hero-nav-btn">Book a Consultation</div>
-  </div>
 
   <!-- Hero content -->
   <div class="hero-body">
@@ -1196,10 +1162,42 @@
     }
   });
 
+  /* ── Mobile navigation ── */
+  const menuToggle = document.querySelector('.nav-mobile-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  function setMenuOpen(open, restoreFocus = false) {
+    mobileMenu.classList.toggle('open', open);
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.classList.toggle('menu-open', open);
+    if (restoreFocus) menuToggle.focus();
+  }
+  menuToggle.addEventListener('click', () => {
+    setMenuOpen(menuToggle.getAttribute('aria-expanded') !== 'true');
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => setMenuOpen(false, true));
+  });
+  document.addEventListener('keydown', event => {
+    if (!mobileMenu.classList.contains('open')) return;
+    if (event.key === 'Escape') setMenuOpen(false, true);
+    if (event.key === 'Tab') {
+      const items = [menuToggle, ...mobileMenu.querySelectorAll('a')];
+      const index = items.indexOf(document.activeElement);
+      const next = event.shiftKey ? (index <= 0 ? items.length - 1 : index - 1) : (index + 1) % items.length;
+      event.preventDefault();
+      items[next].focus();
+    }
+  });
+  window.matchMedia('(min-width:1101px)').addEventListener('change', event => {
+    if (event.matches) setMenuOpen(false);
+  });
+
   /* ── Smooth anchor scroll ── */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
+      const id = a.getAttribute('href').slice(1);
+      const target = id ? document.getElementById(id) : document.getElementById('hero');
       if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
   });
